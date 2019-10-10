@@ -1,0 +1,163 @@
+# Spatial Weights
+
+Spatial weights are central components in spatial data analysis. The spatial weights represents the possible spatial interaction between observations in space. Like GeoDa desktop software, `rgeoda` provides a rich variety of methods to create several different types of spatial weights:
+
+* Contiguity Based Weights: `queen_weights()`, `rook_weights()`
+* Distance Based Weights: `distance_weights()`
+* K-Nearest Neighbor Weights: `knn_weights()`
+* Kernel Weights: `distance_weights()` and `knn_weights()` with kernel parameters
+
+## Queen Contiguity Weights
+
+To create a Queen contiguity weights, we can call pygeoda's function 
+```r
+gda_queen(gda, order=1, include_lower_order = False, precision_threshold = 0)
+``` 
+by passing the GeoDa object `guerry` we just created: 
+
+```{r}
+queen_w <- queen_weights(guerry)
+queen_w
+```
+
+The function `queen_weights()` returns an instance of 
+`Weight` object. One can access the meta data of the spatial
+weights by accessing the attributes of `GeoDaWeight` object:
+
+## Attributes of `Weight` object
+
+* weight_type
+* is_symmetric
+* sparsity
+* density
+* min_nbrs
+* max_nbrs
+* mean_nbrs
+* median_nbrs
+* bool HasIsolates()
+* [] GetNeighbors(idx)
+* double SpatialLag(idx, [data])
+* SaveToFile()
+
+We can also access the details of the weights: e.g. list the neighbors of a specified observation, which is very helpful in exploratory spatial data analysis (which is focused in next tutorial):
+
+```{r}
+nbrs <- queen_w$GetNeighbors(0)
+cat("\nNeighbors of 0-st observation are:", nbrs)
+```
+We can also compute the spatial lag of a specified observation by passing the values of the selected variable:
+
+```{r}
+lag0 <- queen_w$SpatialLag(0, crm_prp)
+cat("\nSpatial lag of 0-st observation is:", lag0)
+```
+
+## Rook Contiguity Weights
+
+To create a Rook contiguity weights, we can call pygeoda's function 
+```r
+rook_weights(gda, order=1,include_lower_order=False, precision_threshold = 0)
+``` 
+by passing the GeoDa object `guerry` we just created: 
+
+```{r}
+rook_w <- rook_weights(guerry)
+rook_w
+```
+
+The weights we created are in memory, which makes it straight forward for spatial data analysis and also are good for programming your application. To save the weights to a file, we need to call GeoDaWeight's function 
+```r
+SaveToFile(ofname, layer_name, id_name, id_vec)
+```
+
+The `layer_name` is the layer name of loaded dataset. For a ESRI shapefile, the layer name is the file name without the suffix (e.g. Guerry). 
+
+The `id_name` is a key (column name), which means the associated column contains unique values, that makes sure that the weights are connected to the correct observations in the data table. 
+
+The `id_vec` is the actual column data of `id_name`, it could be a tuple of integer or string values.
+
+For example, in Guerry dataset, the column "CODE_DE" can be used as a key to save a weights file:
+
+```{r}
+rook_w$SaveToFile('/Users/xun/Downloads/Guerry_r.gal', 'Guerry', 'CODE_DE', guerry$GetIntegerCol('CODE_DE'))
+```
+
+Then, we should find the file "Guerry_r.gal" in the output directory.
+
+## Distance Based Weights
+
+To create a Distance based weights, we can call rgeoda's function 
+```r
+gda_distance_weights(gda, dist_thres, power=1.0,  is_inverse=False, is_arc=False, is_mile=True)
+``` 
+by passing the GeoDa object `guerry` we just created and the value of distance threshold. Like GeoDa, rgeoda provides a function to help you find a optimized distance threshold that guarantees that every observation has at least one neighbor:
+
+```r
+gda_min_distthreshold(GeoDa gda, bool is_arc = False, bool is_mile = True)
+```
+
+```{r}
+dist_thres <- min_distthreshold(guerry)
+dist_w <- distance_weights(guerry, dist_thres)
+dist_w
+```
+## K-Nearest Neighbor Weights
+
+A special case of distance based weights is K-Nearest neighbor weights, in which every obersvation will have exactly k neighbors. To create a KNN weights, we can call pygeoda's function:
+```r
+gda_knn_weights(gda, k, power = 1.0,is_inverse = False, is_arc = False, is_mile = True)
+```
+
+For example, to create a 6-nearest neighbor weights using Guerry dataset:
+```{r}
+knn6_w <- knn_weights(guerry, 6)
+knn6_w
+```
+
+## Kernel Weights
+
+Kernel weights apply kernel function to determine the distance decay in the derived continuous weights kernel. The kernel weights are defined as a function K(z) of the ratio between the distance dij from i to j, and the bandwidth hi, with z=dij/hi. 
+
+The kernl functions include
+
+* triangular
+* uniform 
+* quadratic
+* epanechnikov
+* quartic
+* gaussian
+
+Two functions are provided in rgeoda to create kernel weights:
+
+### Kernel Weights with fixed bandwidth
+
+To create a kernel weights with fixed bandwith:
+```{r}
+bandwidth <- min_distthreshold(guerry)
+kernel_w <- kernel_weights(guerry, bandwidth, "uniform")
+kernel_w
+```
+
+Besides the options `is_inverse`, `power`, `is_arc` and `is_mile` that are the same with the distance based weights, this kernel weights function has another option:
+```
+use_kernel_diagonals	
+(optional) FALSE (default) or TRUE, apply kernel on the diagonal of weights matrix
+```
+
+### Kernel Weights with adaptive bandwidth
+
+To create a kernel weights with adaptive bandwidth or using max KNN distance as bandwidth:
+```{r}
+adptkernel_w = kernel_knn_weights(guerry, 6, "uniform")
+
+adptkernel_w
+```
+
+This kernel weights function two more options:
+```
+adaptive_bandwidth	
+(optional) TRUE (default) or FALSE: TRUE use adaptive bandwidth calculated using distance of k-nearest neithbors, FALSE use max distance of all observation to their k-nearest neighbors
+
+use_kernel_diagonals	
+(optional) FALSE (default) or TRUE, apply kernel on the diagonal of weights matrix
+```

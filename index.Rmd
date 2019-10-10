@@ -1,0 +1,46 @@
+--- 
+title: "rgeoda version 0.0.3"
+author: "Xun Li"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rgeoda/book_intro
+description: "This is a tutorial book to introduce the rgeoda v0.0.3 library. This book includes all the functions that are provided in version 0.0.3. Since rgeoda is under active development, this book will be updated frequently. Please `watch` this github repository to get any notifications."
+---
+
+# Introduction
+
+
+
+rgeoda is a R library for spatial data analysis. It is a R wrapper of the libgeoda C++ library, which is built based on the GeoDa software. This book is used to introduce the rgeoda v0.0.3 library, includes all the functions that are currently provided in version 0.0.3. 
+
+Open resources:
+
+* The rgeoda is open-sourced at: https://github.com/lixun910/rgeoda.
+* The libgeoda is open-sourced at: https://github.com/lixun910/libgeoda.
+
+If you are interested in python programming, you can try a performance-oriented library `pygeoda` for spatial data analysis:
+
+* The pygeoda is open-sourced at: https://github.com/lixun910/pygeoda.
+
+If you have any questions or issues, please open a ticket in one of above repositories.
+
+```{block, type='rmdinfo'}
+Since rgeoda is under active development, this book will be updated frequently. Please "watch" this github repository to get notifications.
+```
+
+
+```{r echo=FALSE}
+knitr::include_graphics("images/csds.jpg")
+```
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

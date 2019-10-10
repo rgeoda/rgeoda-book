@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>rgeoda version 0.0.3</title>
+  <meta name="description" content="This is a tutorial book to introduce the rgeoda v0.0.3 library. This book includes all the functions that are provided in version 0.0.3. Since rgeoda is under active development, this book will be updated frequently. Please watch this github repository to get any notifications." />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="rgeoda version 0.0.3" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a tutorial book to introduce the rgeoda v0.0.3 library. This book includes all the functions that are provided in version 0.0.3. Since rgeoda is under active development, this book will be updated frequently. Please watch this github repository to get any notifications." />
+  <meta name="github-repo" content="rgeoda/book_intro" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="rgeoda version 0.0.3" />
+  
+  <meta name="twitter:description" content="This is a tutorial book to introduce the rgeoda v0.0.3 library. This book includes all the functions that are provided in version 0.0.3. Since rgeoda is under active development, this book will be updated frequently. Please watch this github repository to get any notifications." />
+  
+
+<meta name="author" content="Xun Li" />
+
+
+<meta name="date" content="2019-10-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="intro.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="toc.css" type="text/css" />
+<link rel="stylesheet" href="fontawesome.min.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">rgeoda v0.0.3</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#mac-and-linux"><i class="fa fa-check"></i><b>2.1</b> Mac and Linux</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.2</b> Windows</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.3</b> Load rgeoda library in R</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="load-spatial-data.html"><a href="load-spatial-data.html"><i class="fa fa-check"></i><b>3</b> Load Spatial Data</a><ul>
+<li class="chapter" data-level="3.1" data-path="load-spatial-data.html"><a href="load-spatial-data.html#attributes-of-geoda-object"><i class="fa fa-check"></i><b>3.1</b> Attributes of <code>geoda</code> object</a></li>
+<li class="chapter" data-level="3.2" data-path="load-spatial-data.html"><a href="load-spatial-data.html#access-table-data"><i class="fa fa-check"></i><b>3.2</b> Access Table Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="spatial-weights.html"><a href="spatial-weights.html"><i class="fa fa-check"></i><b>4</b> Spatial Weights</a><ul>
+<li class="chapter" data-level="4.1" data-path="spatial-weights.html"><a href="spatial-weights.html#queen-contiguity-weights"><i class="fa fa-check"></i><b>4.1</b> Queen Contiguity Weights</a></li>
+<li class="chapter" data-level="4.2" data-path="spatial-weights.html"><a href="spatial-weights.html#attributes-of-weight-object"><i class="fa fa-check"></i><b>4.2</b> Attributes of <code>Weight</code> object</a></li>
+<li class="chapter" data-level="4.3" data-path="spatial-weights.html"><a href="spatial-weights.html#rook-contiguity-weights"><i class="fa fa-check"></i><b>4.3</b> Rook Contiguity Weights</a></li>
+<li class="chapter" data-level="4.4" data-path="spatial-weights.html"><a href="spatial-weights.html#distance-based-weights"><i class="fa fa-check"></i><b>4.4</b> Distance Based Weights</a></li>
+<li class="chapter" data-level="4.5" data-path="spatial-weights.html"><a href="spatial-weights.html#k-nearest-neighbor-weights"><i class="fa fa-check"></i><b>4.5</b> K-Nearest Neighbor Weights</a></li>
+<li class="chapter" data-level="4.6" data-path="spatial-weights.html"><a href="spatial-weights.html#kernel-weights"><i class="fa fa-check"></i><b>4.6</b> Kernel Weights</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="spatial-weights.html"><a href="spatial-weights.html#kernel-weights-with-fixed-bandwidth"><i class="fa fa-check"></i><b>4.6.1</b> Kernel Weights with fixed bandwidth</a></li>
+<li class="chapter" data-level="4.6.2" data-path="spatial-weights.html"><a href="spatial-weights.html#kernel-weights-with-adaptive-bandwidth"><i class="fa fa-check"></i><b>4.6.2</b> Kernel Weights with adaptive bandwidth</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html"><i class="fa fa-check"></i><b>5</b> Spatial Autocorrelation</a><ul>
+<li class="chapter" data-level="5.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#local-moran"><i class="fa fa-check"></i><b>5.1</b> Local Moran</a></li>
+<li class="chapter" data-level="5.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#lisa-object"><i class="fa fa-check"></i><b>5.2</b> LISA object</a></li>
+<li class="chapter" data-level="5.3" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#local-geary"><i class="fa fa-check"></i><b>5.3</b> Local Geary</a></li>
+<li class="chapter" data-level="5.4" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#local-getis-ord-statistics"><i class="fa fa-check"></i><b>5.4</b> Local Getis-Ord Statistics</a></li>
+<li class="chapter" data-level="5.5" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#local-join-count"><i class="fa fa-check"></i><b>5.5</b> Local Join Count</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="spatial-clustering.html"><a href="spatial-clustering.html"><i class="fa fa-check"></i><b>6</b> Spatial Clustering</a><ul>
+<li class="chapter" data-level="6.1" data-path="spatial-clustering.html"><a href="spatial-clustering.html#skater"><i class="fa fa-check"></i><b>6.1</b> SKATER</a></li>
+<li class="chapter" data-level="6.2" data-path="spatial-clustering.html"><a href="spatial-clustering.html#redcap"><i class="fa fa-check"></i><b>6.2</b> REDCAP</a></li>
+<li class="chapter" data-level="6.3" data-path="spatial-clustering.html"><a href="spatial-clustering.html#max-p"><i class="fa fa-check"></i><b>6.3</b> Max-p</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="esda-with-rgeoda-and-sp.html"><a href="esda-with-rgeoda-and-sp.html"><i class="fa fa-check"></i><b>7</b> ESDA with rgeoda and sp</a><ul>
+<li class="chapter" data-level="7.1" data-path="esda-with-rgeoda-and-sp.html"><a href="esda-with-rgeoda-and-sp.html#start-from-sp-package"><i class="fa fa-check"></i><b>7.1</b> Start from sp package</a></li>
+<li class="chapter" data-level="7.2" data-path="esda-with-rgeoda-and-sp.html"><a href="esda-with-rgeoda-and-sp.html#create-geoda-object-from-sp"><i class="fa fa-check"></i><b>7.2</b> Create geoda object from sp</a></li>
+<li class="chapter" data-level="7.3" data-path="esda-with-rgeoda-and-sp.html"><a href="esda-with-rgeoda-and-sp.html#esda-with-rgeoda-and-sp-1"><i class="fa fa-check"></i><b>7.3</b> ESDA with rgeoda and sp</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="esda-with-rgeoda-and-sp.html"><a href="esda-with-rgeoda-and-sp.html#local-moran-map"><i class="fa fa-check"></i><b>7.3.1</b> Local Moran Map</a></li>
+<li class="chapter" data-level="7.3.2" data-path="esda-with-rgeoda-and-sp.html"><a href="esda-with-rgeoda-and-sp.html#local-geary-map"><i class="fa fa-check"></i><b>7.3.2</b> Local Geary Map</a></li>
+<li class="chapter" data-level="7.3.3" data-path="esda-with-rgeoda-and-sp.html"><a href="esda-with-rgeoda-and-sp.html#local-g-map"><i class="fa fa-check"></i><b>7.3.3</b> Local G Map</a></li>
+<li class="chapter" data-level="7.3.4" data-path="esda-with-rgeoda-and-sp.html"><a href="esda-with-rgeoda-and-sp.html#skater-map"><i class="fa fa-check"></i><b>7.3.4</b> SKATER Map</a></li>
+<li class="chapter" data-level="7.3.5" data-path="esda-with-rgeoda-and-sp.html"><a href="esda-with-rgeoda-and-sp.html#max-p-clustering-map"><i class="fa fa-check"></i><b>7.3.5</b> Max-p Clustering Map</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="esda-with-rgeoda-and-sf.html"><a href="esda-with-rgeoda-and-sf.html"><i class="fa fa-check"></i><b>8</b> ESDA with rgeoda and sf</a><ul>
+<li class="chapter" data-level="8.1" data-path="esda-with-rgeoda-and-sf.html"><a href="esda-with-rgeoda-and-sf.html#start-from-sf-package"><i class="fa fa-check"></i><b>8.1</b> Start from sf package</a></li>
+<li class="chapter" data-level="8.2" data-path="esda-with-rgeoda-and-sf.html"><a href="esda-with-rgeoda-and-sf.html#create-geoda-object-from-sf"><i class="fa fa-check"></i><b>8.2</b> Create geoda object from sf</a></li>
+<li class="chapter" data-level="8.3" data-path="esda-with-rgeoda-and-sf.html"><a href="esda-with-rgeoda-and-sf.html#esda-with-rgeoda-and-sf-1"><i class="fa fa-check"></i><b>8.3</b> ESDA with rgeoda and sf</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="esda-with-rgeoda-and-sf.html"><a href="esda-with-rgeoda-and-sf.html#local-moran-map-1"><i class="fa fa-check"></i><b>8.3.1</b> Local Moran Map</a></li>
+<li class="chapter" data-level="8.3.2" data-path="esda-with-rgeoda-and-sf.html"><a href="esda-with-rgeoda-and-sf.html#local-geary-map-1"><i class="fa fa-check"></i><b>8.3.2</b> Local Geary Map</a></li>
+<li class="chapter" data-level="8.3.3" data-path="esda-with-rgeoda-and-sf.html"><a href="esda-with-rgeoda-and-sf.html#local-g-map-1"><i class="fa fa-check"></i><b>8.3.3</b> Local G Map</a></li>
+<li class="chapter" data-level="8.3.4" data-path="esda-with-rgeoda-and-sf.html"><a href="esda-with-rgeoda-and-sf.html#skater-map-1"><i class="fa fa-check"></i><b>8.3.4</b> SKATER Map</a></li>
+<li class="chapter" data-level="8.3.5" data-path="esda-with-rgeoda-and-sf.html"><a href="esda-with-rgeoda-and-sf.html#max-p-clustering-map-1"><i class="fa fa-check"></i><b>8.3.5</b> Max-p Clustering Map</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">rgeoda version 0.0.3</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">rgeoda version 0.0.3</h1>
+<p class="author"><em>Xun Li</em></p>
+<p class="date"><em>2019-10-09</em></p>
+</div>
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<p>rgeoda is a R library for spatial data analysis. It is a R wrapper of the libgeoda C++ library, which is built based on the GeoDa software. This book is used to introduce the rgeoda v0.0.3 library, includes all the functions that are currently provided in version 0.0.3.</p>
+<p>Open resources:</p>
+<ul>
+<li>The rgeoda is open-sourced at: <a href="https://github.com/lixun910/rgeoda" class="uri">https://github.com/lixun910/rgeoda</a>.</li>
+<li>The libgeoda is open-sourced at: <a href="https://github.com/lixun910/libgeoda" class="uri">https://github.com/lixun910/libgeoda</a>.</li>
+</ul>
+<p>If you are interested in python programming, you can try a performance-oriented library <code>pygeoda</code> for spatial data analysis:</p>
+<ul>
+<li>The pygeoda is open-sourced at: <a href="https://github.com/lixun910/pygeoda" class="uri">https://github.com/lixun910/pygeoda</a>.</li>
+</ul>
+<p>If you have any questions or issues, please open a ticket in one of above repositories.</p>
+<div class="rmdinfo">
+<p>
+Since rgeoda is under active development, this book will be updated frequently. Please “watch” this github repository to get notifications.
+</p>
+</div>
+<p><img src="images/csds.jpg" /><!-- --></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

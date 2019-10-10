@@ -1,0 +1,210 @@
+# Spatial Autocorrelation
+
+rgeoda 0.0.3 provids following methods for univariate local spatial autocorrelation statistics:
+
+
+* Local Moran: local_moran()
+* Local Geary: local_geary()
+* Local Getis-Ord statistics: local_g() and local_gstar()
+* Local Join Count: local_joincount()
+
+
+Methods for bivariate and multivariate local spatial autocorrelation statistics, as well as global spatial autocorrelation satatistics, will be included in next release of rgeoda.
+
+In this tutorial, we will only introduce how to call these methods using pygeoda. For more information about the local spatial autocorrelation statisticis, please read the lab note that Dr. Luc Anselin wrote: http://geodacenter.github.io/workbook/6a_local_auto/lab6a.html. 
+
+## Local Moran
+
+The Local Moran statistic is a method to identify local clusters and local spatial outliers. For example, we can call  function `local_moran()` with the created Queen weights and the data “crm_prp” as input parameters:
+
+```{r}
+lisa <- local_moran(queen_w, crm_prp)
+```
+
+## LISA object
+
+The `local_moran()` function will return a `lisa` object, which we can call its functions to access the results of lisa computation. The functions include:
+
+```
+GetClusterIndicators()
+----------------------
+Get the local cluster indicators returned from LISA computation.
+
+GetColors()
+-----------
+Get the cluster colors of LISA computation.
+
+GetLabels()
+-----------
+Get the cluster labels of LISA computation.
+
+GetLISAValues()
+---------------
+Get the local spatial autocorrelation values returned from LISA computation.
+
+GetNumNeighbors()
+-----------------
+Get the number of neighbors of every observations in LISA computation.
+
+GetPValues()
+------------
+Get the local pseudo-p values of significance returned from LISA computation.
+
+SetPermutations(num_perm)
+-------------------------
+Set the number of permutations for the LISA computation
+
+SetThreads(num_threads)
+-----------------------
+Set the number of CPU threads for the LISA computation
+
+Run()
+-----
+Call to run LISA computation
+
+```
+
+For example, we can call the function `GetLISAValues()` to get the values of local Moran:
+
+```{r}
+lms <- lisa$GetLISAValues()
+lms
+```
+
+To get the pseudo-p values of significance of local Moran computation:
+```{r}
+pvals <- lisa$GetPValues()
+pvals
+```
+
+To get the cluster indicators of local Moran computation:
+
+```{r}
+cats <- lisa$GetClusterIndicators()
+cats
+```
+
+The predefined values of the indicators of LISA cluster are:
+```
+0 Not significant
+1 High-High
+2 Low-Low
+3 High-Low
+4 Low-High
+5 Neighborless
+6 Undefined
+```
+which can be accessed via function `GetLabels()`:
+```{r}
+lbls <- lisa$GetLabels()
+lbls
+```
+
+```{block, type='rmdinfo'}
+Different LISA objects (e.g. local_geary()) will return different labels and colors. 
+```
+
+By default, the `local_moran()` function will run with some default parameters, e.g.:
+```
+permutation number: 999
+seed for random number generator: 123456789
+```
+, which are identical to GeoDa desktop software so that we can replicate the results in GeoDa software. It is also easy to change the paremter and re-run the LISA computation by calling Run() function. 
+
+For example, re-run the above local Moran example using 9999 permutations 
+```{r}
+lisa$SetPermutations(9999)
+lisa$Run()
+```
+Then, we can use the same `lisa` object to get the new results after 9999 permutations:
+```{r}
+pvals <- lisa$GetPValues()
+pvals
+```
+
+rgeoda uses GeoDa’s C++ code, in which multi-threading is used to accelerate the computation of LISA. We can specify how many threads to run the computation:
+
+```{r}
+lisa$SetThreads(4)
+lisa$Run()
+lisa$GetPValues()
+```
+
+## Local Geary
+
+Local Geary is a type of LISA that focuses on squared differences/dissimilarity. A small value of the local geary statistics suggest positive spatial autocorrelation, whereas large values suggest negative spatial autocorrelation. 
+
+For example, we can call the function `local_geary()` with the created Queen weights and the data “crm_prp” as input parameters:
+
+```{r}
+geary_crmprs <- local_geary(queen_w, crm_prp)
+```
+
+To get the cluster indicators of the local Geary computation:
+```{r}
+geary_crmprs$GetClusterIndicators()
+```
+
+To get the pseudo-p values of the local Geary computation:
+
+```{r}
+geary_crmprs$GetPValues()
+```
+
+## Local Getis-Ord Statistics
+
+There are two types of local Getis-Ord statistics: one is computing a ratio of the weighted average of the values in the neighboring locations, not including the value at the location; while another type of statistic includes the value at the location in both numerator and denominator.
+
+A value larger than the mean suggests a high-high cluster or hot spot, a value smaller than the mean indicates a low-low cluster or cold spot.
+
+For example, we can call the function `local_g()` with the created Queen weights and the data “crm_prp” as input parameters:
+
+```{r}
+localg_crmprs <- local_g(queen_w, crm_prp)
+```
+
+To get the cluster indicators of the local G computation:
+
+```{r}
+localg_crmprs$GetClusterIndicators()
+```
+
+To get the pseudo-p values of the local G computation:
+```{r}
+localg_crmprs$GetPValues()
+```
+
+For the second type of local Getis-Ord statistics, we can call the function `local_gstar()` with the created Queen weights and the data “crm_prp” as input parameters:
+```{r}
+localgstar_crmprs <- local_gstar(queen_w, crm_prp)
+```
+
+## Local Join Count
+
+
+Local Join Count is a method to identify local clusters for binary data by using a local version of the so-called BB join count statistic. The statistic is only meaningful for those observations with value 1. 
+
+For example, we can load the columbus dataset, and call the function `local_joincount()` with a Queen weights and the data “nsa”, which is a set of binary (0,1) values, as input parameters:
+
+```{r}
+columbus_path <- system.file("extdata", "columbus.shp", package = "rgeoda")
+columbus <- geoda_open(columbus_path)
+
+columbus_w <- queen_weights(columbus)
+localjc_crmprs <- local_joincount(columbus_w, columbus$table$nsa)
+```
+To get the cluster indicators of the local Join Count computation:
+
+```{r}
+localjc_crmprs$GetClusterIndicators()
+```
+
+To get the pseudo-p values of the local Join Count  computation:
+```{r}
+localjc_crmprs$GetPValues()
+```
+
+To get the number of neighbors of the local Join Count computation:
+```{r}
+localjc_crmprs$GetNumNeighbors()
+```

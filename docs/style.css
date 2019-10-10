@@ -1,0 +1,64 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+.rmdinfo {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5;
+  position:relative;
+}
+
+.rmdinfo:before {
+    content: "\f05a";
+    font-family: FontAwesome;
+    left:10px;
+    position:absolute;
+    top:0px;
+    font-size: 3.5em;
+    color: #999999;
+ }
+ .rmdwarn {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5;
+  position:relative;
+}
+
+.rmdwarn:before {
+    content: "\f071";
+    font-family: FontAwesome;
+    left:10px;
+    position:absolute;
+    top:0px;
+    font-size: 3.5em;
+    color: #800000;
+ }
+
+
+ .rmdtip {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5;
+  position:relative;
+}
+
+.rmdtip:before {
+    content: "\f0eb";
+    font-family: FontAwesome;
+    left:10px;
+    position:absolute;
+    top:0px;
+    font-size: 3.5em;
+    color: #800000;
+ }
