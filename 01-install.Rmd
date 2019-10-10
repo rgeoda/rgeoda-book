@@ -5,7 +5,7 @@ Like GeoDa desktop software, rgeoda are avaiable to different platforms includin
 
 ## Mac
 
-In R console, use install.packages() function to install rgeoda from its **binary pacakge** at: https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3_osx.tgz
+In R console, use install.packages() function to install rgeoda from its **binary pacakge**: 
 
 ```r
 install.packages("https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3_osx.tgz")
@@ -13,24 +13,24 @@ install.packages("https://github.com/lixun910/rgeoda/releases/download/0.0.3/rge
 
 If you have an older version of Mac OS and the above command failed to install rgeoda, please try to install "Xcode Command Line Tools" and then install rgeoda from source:
 ```r
-install.packages("https://github.com/lixun910/rgeoda/archive/0.0.3.tar.gz")
+install.packages("https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.tar.gz")
 # or the development version
 # devtools::install_github("lixun910/rgeoda")
 ```
 
 ## Linux
 
-In R console, use install.packages() function to install rgeoda from its **source pacakge** at: https://github.com/lixun910/rgeoda/archive/0.0.3.tar.gz
+In R console, use install.packages() function to install rgeoda from its **source pacakge**: 
 
 ```r
-install.packages("https://github.com/lixun910/rgeoda/archive/0.0.3.tar.gz")
+install.packages("https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.tar.gz")
 # or the development version
 # devtools::install_github("lixun910/rgeoda")
 ```
 
 ## Windows
 
-In R console, one can use install.packages() function to install rgeoda from its **binary pacakge** at: https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.zip
+In R console, one can use install.packages() function to install rgeoda from its **binary pacakge**: 
 
 ```{r eval=FALSE}
 install.packages("https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.zip")
