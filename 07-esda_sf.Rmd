@@ -191,7 +191,7 @@ legend('bottomleft', legend = skater_labels, fill = skater_colors, border = "#ee
 ### Max-p Clustering Map
 
 ```{r}
-bound_vals <- as.numeric(guerry_sp$Pop1831)
+bound_vals <- as.numeric(guerry_sf$Pop1831)
 min_bound <- 3236.67 # 10% of Pop1831
 
 maxp_clusters <- maxp(queen_w, data, bound_vals, min_bound, "greedy")
