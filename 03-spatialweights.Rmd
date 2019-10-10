@@ -11,7 +11,7 @@ Spatial weights are central components in spatial data analysis. The spatial wei
 
 To create a Queen contiguity weights, we can call pygeoda's function 
 ```r
-gda_queen(gda, order=1, include_lower_order = False, precision_threshold = 0)
+queen_weights(gda, order=1, include_lower_order = False, precision_threshold = 0)
 ``` 
 by passing the GeoDa object `guerry` we just created: 
 

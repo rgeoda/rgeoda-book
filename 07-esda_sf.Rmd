@@ -69,6 +69,8 @@ Now, with the geoda object `guerry`, you can call rgeoda’s spatial analysis fu
 ```{r}
 queen_w <- queen_weights(guerry)
 crm_prp <- as.numeric(guerry_sf$Crm_prp)
+queen_w
+crm_prp
 ```
 ### Local Moran Map
 
@@ -111,9 +113,9 @@ p_labels <- c("Not significant", "p <= 0.05", "p <= 0.01", "p <= 0.001")
 p_colors <- c("#eeeeee", "#84f576", "#53c53c", "#348124")
 plot(st_geometry(guerry_sf), 
      col=sapply(lisa_p, function(x){
-       if (x <= 0.05) return(p_colors[2])
+       if (x <= 0.001) return(p_colors[4])
        else if (x <= 0.01) return(p_colors[3])
-       else if (x <= 0.001) return (p_colors[4])
+       else if (x <= 0.05) return (p_colors[2])
        else return(p_colors[1])
        }), 
      border = "#333333", lwd=0.2)

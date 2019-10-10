@@ -24,7 +24,7 @@
 <meta name="author" content="Xun Li" />
 
 
-<meta name="date" content="2019-10-09" />
+<meta name="date" content="2019-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -136,8 +136,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#mac-and-linux"><i class="fa fa-check"></i><b>2.1</b> Mac and Linux</a></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.2</b> Windows</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.3</b> Load rgeoda library in R</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#linux"><i class="fa fa-check"></i><b>2.2</b> Linux</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.3</b> Windows</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.4</b> Load rgeoda library in R</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="load-spatial-data.html"><a href="load-spatial-data.html"><i class="fa fa-check"></i><b>3</b> Load Spatial Data</a><ul>
 <li class="chapter" data-level="3.1" data-path="load-spatial-data.html"><a href="load-spatial-data.html#attributes-of-geoda-object"><i class="fa fa-check"></i><b>3.1</b> Attributes of <code>geoda</code> object</a></li>
@@ -189,7 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/rgeoda/rgeoda-book" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -214,12 +215,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In rgeoda v0.0.3, there are three different approaches explicitly incorporate the contiguity constraint in the optimization process: SKATER, Redcap and Max-p. More more details, please read the lab note that Dr. Luc Anselin wrote: <a href="http://geodacenter.github.io/workbook/8_spatial_clusters/lab8.html" class="uri">http://geodacenter.github.io/workbook/8_spatial_clusters/lab8.html</a></p>
 <p>For example, to apply spatial clustering on the Guerry dataset, we use the queen weights to define the spatial contiguity and select 6 variables for similarity measure: “Crm_prs”, “Crm_prp”, “Litercy”, “Donatns”, “Infants”, “Suicids”.</p>
 <p>The following code is used to get a 2D data list for the selected variables:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">data &lt;-<span class="st"> </span><span class="kw">list</span>(guerry<span class="op">$</span>table<span class="op">$</span>Crm_prs, guerry<span class="op">$</span>table<span class="op">$</span>Crm_prp, guerry<span class="op">$</span>table<span class="op">$</span>Litercy, guerry<span class="op">$</span>table<span class="op">$</span>Donatns, guerry<span class="op">$</span>table<span class="op">$</span>Infants, guerry<span class="op">$</span>table<span class="op">$</span>Suicids)</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">data &lt;-<span class="st"> </span><span class="kw">list</span>(guerry<span class="op">$</span>table<span class="op">$</span>Crm_prs, guerry<span class="op">$</span>table<span class="op">$</span>Crm_prp, guerry<span class="op">$</span>table<span class="op">$</span>Litercy, guerry<span class="op">$</span>table<span class="op">$</span>Donatns, guerry<span class="op">$</span>table<span class="op">$</span>Infants, guerry<span class="op">$</span>table<span class="op">$</span>Suicids)</a></code></pre></div>
 <div id="skater" class="section level2">
 <h2><span class="header-section-number">6.1</span> SKATER</h2>
 <p>The Spatial C(K)luster Analysis by Tree Edge Removal(SKATER) algorithm introduced by Assuncao et al. (2006) is based on the optimal pruning of a minimum spanning tree that reflects the contiguity structure among the observations. It provides an optimized algorithm to prune to tree into several clusters that their values of selected variables are as similar as possible.</p>
 <p>The SKATER function in rgeoda:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="kw">skater</span>(k, w, data, <span class="dt">distance_method=</span><span class="st">&#39;euclidean&#39;</span>, <span class="dt">bound_vals =</span> [],  <span class="dt">min_bound =</span> <span class="dv">0</span>, <span class="dt">random_seed=</span><span class="dv">123456789</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="kw">skater</span>(k, w, data, <span class="dt">distance_method=</span><span class="st">&#39;euclidean&#39;</span>, <span class="dt">bound_vals =</span> [],  <span class="dt">min_bound =</span> <span class="dv">0</span>, <span class="dt">random_seed=</span><span class="dv">123456789</span>)</a></code></pre></div>
 <div class="rmdinfo">
 <p>
 The parameters <code>distance_method</code>, <code>bound_vals</code>, <code>min_bound</code> and <code>random_seed</code> are optional.
@@ -231,13 +232,13 @@ See <a href="spatial-clustering.html#max-p">Max-p</a> for the usage of <code>bou
 </p>
 </div>
 <p>For example, to create 4 spatially contiguous clusters using <code>skater()</code> with Guerry dataset, the queen weights and the values of the 6 selected variables:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">guerry_clusters &lt;-<span class="st"> </span><span class="kw">skater</span>(<span class="dv">4</span>, queen_w, data)</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">guerry_clusters &lt;-<span class="st"> </span><span class="kw">skater</span>(<span class="dv">4</span>, queen_w, data)</a></code></pre></div>
 <p>This <code>skater()</code> function returns a 2D list, which represents 4 clusters. Each cluster is composed by several contiguity areas, e.g. 15, 74, 16, 55, 60, 39, 68, 33, 17, 82, 81, 0, 2, 40, 20, 80</p>
 <p>rgeoda also provides utility functions to compute some descriptive statistics of the clustering results, e.g. to compute the ratio of between to total sum of squares:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">betweenss &lt;-<span class="st"> </span><span class="kw">between_sumofsquare</span>(guerry_clusters, data)</a>
-<a class="sourceLine" id="cb89-2" data-line-number="2">totalss &lt;-<span class="st"> </span><span class="kw">total_sumofsquare</span>( data)</a>
-<a class="sourceLine" id="cb89-3" data-line-number="3">ratio &lt;-<span class="st">  </span>betweenss <span class="op">/</span><span class="st"> </span>totalss</a>
-<a class="sourceLine" id="cb89-4" data-line-number="4"><span class="kw">cat</span>(<span class="st">&quot;The ratio of between to total sum of square:&quot;</span>, ratio)</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1">betweenss &lt;-<span class="st"> </span><span class="kw">between_sumofsquare</span>(guerry_clusters, data)</a>
+<a class="sourceLine" id="cb90-2" data-line-number="2">totalss &lt;-<span class="st"> </span><span class="kw">total_sumofsquare</span>( data)</a>
+<a class="sourceLine" id="cb90-3" data-line-number="3">ratio &lt;-<span class="st">  </span>betweenss <span class="op">/</span><span class="st"> </span>totalss</a>
+<a class="sourceLine" id="cb90-4" data-line-number="4"><span class="kw">cat</span>(<span class="st">&quot;The ratio of between to total sum of square:&quot;</span>, ratio)</a></code></pre></div>
 <pre><code>## The ratio of between to total sum of square: 0.3156447</code></pre>
 </div>
 <div id="redcap" class="section level2">
@@ -250,8 +251,8 @@ See <a href="spatial-clustering.html#max-p">Max-p</a> for the usage of <code>bou
 <li>Full-order and Single-linkage</li>
 </ul>
 <p>For example, to find 4 clusters using the same dataset and weights as above using REDCAP with Full-order and Complete-linkage method:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">redcap_clusters &lt;-<span class="st"> </span><span class="kw">redcap</span>(<span class="dv">4</span>, queen_w, data, <span class="st">&quot;fullorder-completelinkage&quot;</span>)</a>
-<a class="sourceLine" id="cb91-2" data-line-number="2">redcap_clusters</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">redcap_clusters &lt;-<span class="st"> </span><span class="kw">redcap</span>(<span class="dv">4</span>, queen_w, data, <span class="st">&quot;fullorder-completelinkage&quot;</span>)</a>
+<a class="sourceLine" id="cb92-2" data-line-number="2">redcap_clusters</a></code></pre></div>
 <pre><code>## [[1]]
 ##  [1] 15 74 16 55 60 39 68 33 17 82 81  0  2 40 20 80
 ## 
@@ -265,10 +266,10 @@ See <a href="spatial-clustering.html#max-p">Max-p</a> for the usage of <code>bou
 ## [[4]]
 ##  [1] 49 52 72 84  8 57 56 59 42  1 25 51 48 54 64 75 18 83 73 36 24 71  6
 ## [24] 67 65 70 22 12</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">betweenss &lt;-<span class="st"> </span><span class="kw">between_sumofsquare</span>(redcap_clusters, data)</a>
-<a class="sourceLine" id="cb93-2" data-line-number="2">totalss &lt;-<span class="st"> </span><span class="kw">total_sumofsquare</span>( data)</a>
-<a class="sourceLine" id="cb93-3" data-line-number="3">ratio &lt;-<span class="st"> </span>betweenss <span class="op">/</span><span class="st"> </span>totalss</a>
-<a class="sourceLine" id="cb93-4" data-line-number="4"><span class="kw">cat</span>(<span class="st">&quot;The ratio of between to total sum of square:&quot;</span>, ratio)</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">betweenss &lt;-<span class="st"> </span><span class="kw">between_sumofsquare</span>(redcap_clusters, data)</a>
+<a class="sourceLine" id="cb94-2" data-line-number="2">totalss &lt;-<span class="st"> </span><span class="kw">total_sumofsquare</span>( data)</a>
+<a class="sourceLine" id="cb94-3" data-line-number="3">ratio &lt;-<span class="st"> </span>betweenss <span class="op">/</span><span class="st"> </span>totalss</a>
+<a class="sourceLine" id="cb94-4" data-line-number="4"><span class="kw">cat</span>(<span class="st">&quot;The ratio of between to total sum of square:&quot;</span>, ratio)</a></code></pre></div>
 <pre><code>## The ratio of between to total sum of square: 0.3156447</code></pre>
 </div>
 <div id="max-p" class="section level2">
@@ -283,35 +284,35 @@ See <a href="spatial-clustering.html#max-p">Max-p</a> for the usage of <code>bou
 <p>Unlike SKATER and REDCAP that one can specify the number of clusters as an input paramter, max-p doesn’t allow to specify the number of clusters explicitly, but a constrained variable and the minimum bounding value that each cluster should reach that are used to find an optimized number of clusters.</p>
 <p>For example, to use <code>greedy</code> algorithm in maxp function with the same dataset and weights as above to find optimal clusters using max-p:</p>
 <p>First, we need to specify, for example, every cluster must have population &gt;= 3236.67 thousands people:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">bound_vals &lt;-<span class="st"> </span>guerry<span class="op">$</span>table<span class="op">$</span>Pop1831</a>
-<a class="sourceLine" id="cb95-2" data-line-number="2">min_bound &lt;-<span class="st"> </span><span class="fl">3236.67</span> <span class="co"># 10% of Pop1831</span></a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">bound_vals &lt;-<span class="st"> </span>guerry<span class="op">$</span>table<span class="op">$</span>Pop1831</a>
+<a class="sourceLine" id="cb96-2" data-line-number="2">min_bound &lt;-<span class="st"> </span><span class="fl">3236.67</span> <span class="co"># 10% of Pop1831</span></a></code></pre></div>
 <p>Then, we can call the max-p function with “greedy” algorith, the bound values and minimum bound value:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">maxp_clusters &lt;-<span class="st"> </span><span class="kw">maxp</span>(queen_w, data, bound_vals, min_bound, <span class="st">&quot;greedy&quot;</span>)</a>
-<a class="sourceLine" id="cb96-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb96-3" data-line-number="3">betweenss &lt;-<span class="st"> </span><span class="kw">between_sumofsquare</span>(maxp_clusters, data)</a>
-<a class="sourceLine" id="cb96-4" data-line-number="4">ratio &lt;-<span class="st"> </span>betweenss <span class="op">/</span><span class="st"> </span>totalss</a>
-<a class="sourceLine" id="cb96-5" data-line-number="5"><span class="kw">cat</span>(<span class="st">&quot;The ratio of between to total sum of square:&quot;</span>, ratio)</a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">maxp_clusters &lt;-<span class="st"> </span><span class="kw">maxp</span>(queen_w, data, bound_vals, min_bound, <span class="st">&quot;greedy&quot;</span>)</a>
+<a class="sourceLine" id="cb97-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb97-3" data-line-number="3">betweenss &lt;-<span class="st"> </span><span class="kw">between_sumofsquare</span>(maxp_clusters, data)</a>
+<a class="sourceLine" id="cb97-4" data-line-number="4">ratio &lt;-<span class="st"> </span>betweenss <span class="op">/</span><span class="st"> </span>totalss</a>
+<a class="sourceLine" id="cb97-5" data-line-number="5"><span class="kw">cat</span>(<span class="st">&quot;The ratio of between to total sum of square:&quot;</span>, ratio)</a></code></pre></div>
 <pre><code>## The ratio of between to total sum of square: 0.5070181</code></pre>
 <p>We can also specify using <code>tabu search</code> algorithm in maxp function with the parameter of tabu length:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">maxp_tabu_clusters &lt;-<span class="st"> </span><span class="kw">maxp</span>(queen_w, data, bound_vals, min_bound, <span class="st">&quot;tabu&quot;</span>, <span class="dt">tabu_length=</span><span class="dv">95</span>)</a>
-<a class="sourceLine" id="cb98-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb98-3" data-line-number="3">betweenss &lt;-<span class="st"> </span><span class="kw">between_sumofsquare</span>(maxp_tabu_clusters, data)</a>
-<a class="sourceLine" id="cb98-4" data-line-number="4">ratio &lt;-<span class="st"> </span>betweenss <span class="op">/</span><span class="st"> </span>totalss</a>
-<a class="sourceLine" id="cb98-5" data-line-number="5"><span class="kw">cat</span>(<span class="st">&quot;The ratio of between to total sum of square:&quot;</span>, ratio)</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1">maxp_tabu_clusters &lt;-<span class="st"> </span><span class="kw">maxp</span>(queen_w, data, bound_vals, min_bound, <span class="st">&quot;tabu&quot;</span>, <span class="dt">tabu_length=</span><span class="dv">95</span>)</a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb99-3" data-line-number="3">betweenss &lt;-<span class="st"> </span><span class="kw">between_sumofsquare</span>(maxp_tabu_clusters, data)</a>
+<a class="sourceLine" id="cb99-4" data-line-number="4">ratio &lt;-<span class="st"> </span>betweenss <span class="op">/</span><span class="st"> </span>totalss</a>
+<a class="sourceLine" id="cb99-5" data-line-number="5"><span class="kw">cat</span>(<span class="st">&quot;The ratio of between to total sum of square:&quot;</span>, ratio)</a></code></pre></div>
 <pre><code>## The ratio of between to total sum of square: 0.5280299</code></pre>
 <p>To apply <code>simulated annealing</code> algorithm in maxp function with the parameter of cooling rate:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">maxp_sa_clusters &lt;-<span class="st"> </span><span class="kw">maxp</span>(queen_w, data, bound_vals, min_bound, <span class="st">&quot;sa&quot;</span>, <span class="dt">cool_rate=</span><span class="fl">0.75</span>)</a>
-<a class="sourceLine" id="cb100-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb100-3" data-line-number="3">betweenss &lt;-<span class="st"> </span><span class="kw">between_sumofsquare</span>(maxp_sa_clusters, data)</a>
-<a class="sourceLine" id="cb100-4" data-line-number="4">ratio &lt;-<span class="st"> </span>betweenss <span class="op">/</span><span class="st"> </span>totalss</a>
-<a class="sourceLine" id="cb100-5" data-line-number="5"><span class="kw">cat</span>(<span class="st">&quot;The ratio of between to total sum of square:&quot;</span>, ratio)</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1">maxp_sa_clusters &lt;-<span class="st"> </span><span class="kw">maxp</span>(queen_w, data, bound_vals, min_bound, <span class="st">&quot;sa&quot;</span>, <span class="dt">cool_rate=</span><span class="fl">0.75</span>)</a>
+<a class="sourceLine" id="cb101-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb101-3" data-line-number="3">betweenss &lt;-<span class="st"> </span><span class="kw">between_sumofsquare</span>(maxp_sa_clusters, data)</a>
+<a class="sourceLine" id="cb101-4" data-line-number="4">ratio &lt;-<span class="st"> </span>betweenss <span class="op">/</span><span class="st"> </span>totalss</a>
+<a class="sourceLine" id="cb101-5" data-line-number="5"><span class="kw">cat</span>(<span class="st">&quot;The ratio of between to total sum of square:&quot;</span>, ratio)</a></code></pre></div>
 <pre><code>## The ratio of between to total sum of square: 0.5260249</code></pre>
 <p>We can also increase the number of iterations for local search process by specifying the parameter <code>initial</code> (default value is 99):</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">maxp_clusters &lt;-<span class="st"> </span><span class="kw">maxp</span>(queen_w, data, bound_vals, min_bound, <span class="st">&quot;greedy&quot;</span>, <span class="dt">initial=</span><span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb102-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb102-3" data-line-number="3">betweenss &lt;-<span class="st"> </span><span class="kw">between_sumofsquare</span>(maxp_clusters, data)</a>
-<a class="sourceLine" id="cb102-4" data-line-number="4">ratio &lt;-<span class="st"> </span>betweenss <span class="op">/</span><span class="st"> </span>totalss</a>
-<a class="sourceLine" id="cb102-5" data-line-number="5"><span class="kw">cat</span>(<span class="st">&quot;Tratio of between to total sum of square:&quot;</span>, ratio)</a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1">maxp_clusters &lt;-<span class="st"> </span><span class="kw">maxp</span>(queen_w, data, bound_vals, min_bound, <span class="st">&quot;greedy&quot;</span>, <span class="dt">initial=</span><span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb103-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb103-3" data-line-number="3">betweenss &lt;-<span class="st"> </span><span class="kw">between_sumofsquare</span>(maxp_clusters, data)</a>
+<a class="sourceLine" id="cb103-4" data-line-number="4">ratio &lt;-<span class="st"> </span>betweenss <span class="op">/</span><span class="st"> </span>totalss</a>
+<a class="sourceLine" id="cb103-5" data-line-number="5"><span class="kw">cat</span>(<span class="st">&quot;Tratio of between to total sum of square:&quot;</span>, ratio)</a></code></pre></div>
 <pre><code>## Tratio of between to total sum of square: 0.5260249</code></pre>
 
 </div>
@@ -354,14 +355,14 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-spatialclustering.Rmd",
+"link": "https://github.com/rgeoda/rgeoda-book/edit/master/05-spatialclustering.Rmd",
 "text": "Edit"
 },
 "history": {
 "link": null,
 "text": null
 },
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"download": ["rgeoda-book.pdf", "rgeoda-book.epub"],
 "toc": {
 "collapse": "subsection"
 }
@@ -369,6 +370,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

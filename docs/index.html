@@ -24,7 +24,7 @@
 <meta name="author" content="Xun Li" />
 
 
-<meta name="date" content="2019-10-09" />
+<meta name="date" content="2019-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -136,8 +136,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#mac-and-linux"><i class="fa fa-check"></i><b>2.1</b> Mac and Linux</a></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.2</b> Windows</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.3</b> Load rgeoda library in R</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#linux"><i class="fa fa-check"></i><b>2.2</b> Linux</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.3</b> Windows</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.4</b> Load rgeoda library in R</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="load-spatial-data.html"><a href="load-spatial-data.html"><i class="fa fa-check"></i><b>3</b> Load Spatial Data</a><ul>
 <li class="chapter" data-level="3.1" data-path="load-spatial-data.html"><a href="load-spatial-data.html#attributes-of-geoda-object"><i class="fa fa-check"></i><b>3.1</b> Attributes of <code>geoda</code> object</a></li>
@@ -189,7 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/rgeoda/rgeoda-book" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -211,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">rgeoda version 0.0.3</h1>
 <p class="author"><em>Xun Li</em></p>
-<p class="date"><em>2019-10-09</em></p>
+<p class="date"><em>2019-10-10</em></p>
 </div>
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">1</span> Introduction</h1>
@@ -272,14 +273,14 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rgeoda/rgeoda-book/edit/master/index.Rmd",
 "text": "Edit"
 },
 "history": {
 "link": null,
 "text": null
 },
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"download": ["rgeoda-book.pdf", "rgeoda-book.epub"],
 "toc": {
 "collapse": "subsection"
 }
@@ -287,6 +288,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

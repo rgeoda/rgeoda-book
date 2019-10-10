@@ -24,7 +24,7 @@
 <meta name="author" content="Xun Li" />
 
 
-<meta name="date" content="2019-10-09" />
+<meta name="date" content="2019-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -136,8 +136,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#mac-and-linux"><i class="fa fa-check"></i><b>2.1</b> Mac and Linux</a></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.2</b> Windows</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.3</b> Load rgeoda library in R</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#linux"><i class="fa fa-check"></i><b>2.2</b> Linux</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.3</b> Windows</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.4</b> Load rgeoda library in R</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="load-spatial-data.html"><a href="load-spatial-data.html"><i class="fa fa-check"></i><b>3</b> Load Spatial Data</a><ul>
 <li class="chapter" data-level="3.1" data-path="load-spatial-data.html"><a href="load-spatial-data.html#attributes-of-geoda-object"><i class="fa fa-check"></i><b>3.1</b> Attributes of <code>geoda</code> object</a></li>
@@ -189,7 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/rgeoda/rgeoda-book" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -222,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="local-moran" class="section level2">
 <h2><span class="header-section-number">5.1</span> Local Moran</h2>
 <p>The Local Moran statistic is a method to identify local clusters and local spatial outliers. For example, we can call function <code>local_moran()</code> with the created Queen weights and the data “crm_prp” as input parameters:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">lisa &lt;-<span class="st"> </span><span class="kw">local_moran</span>(queen_w, crm_prp)</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">lisa &lt;-<span class="st"> </span><span class="kw">local_moran</span>(queen_w, crm_prp)</a></code></pre></div>
 </div>
 <div id="lisa-object" class="section level2">
 <h2><span class="header-section-number">5.2</span> LISA object</h2>
@@ -264,8 +265,8 @@ Run()
 Call to run LISA computation
 </code></pre>
 <p>For example, we can call the function <code>GetLISAValues()</code> to get the values of local Moran:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">lms &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetLISAValues</span>()</a>
-<a class="sourceLine" id="cb46-2" data-line-number="2">lms</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">lms &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetLISAValues</span>()</a>
+<a class="sourceLine" id="cb47-2" data-line-number="2">lms</a></code></pre></div>
 <pre><code>##  [1]  0.0154319783  0.3270633224  0.0212952962  0.0046105448 -0.0028342407
 ##  [6]  0.4149377158 -0.1379463091  0.0998657692  0.2823176310  0.1218745112
 ## [11] -0.0951205417  0.0326111938  0.3878324535  1.1888723840 -0.6452792226
@@ -284,8 +285,8 @@ Call to run LISA computation
 ## [76]  0.2238144189 -0.1621373954  0.0195632289 -0.3233724187 -0.0337778226
 ## [81]  0.0118189869 -0.1164679533 -0.5699624657 -0.0859634996  0.2085373916</code></pre>
 <p>To get the pseudo-p values of significance of local Moran computation:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">pvals &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetPValues</span>()</a>
-<a class="sourceLine" id="cb48-2" data-line-number="2">pvals</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">pvals &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetPValues</span>()</a>
+<a class="sourceLine" id="cb49-2" data-line-number="2">pvals</a></code></pre></div>
 <pre><code>##  [1] 0.414 0.123 0.001 0.474 0.452 0.087 0.243 0.326 0.299 0.303 0.237
 ## [12] 0.460 0.258 0.018 0.199 0.188 0.131 0.004 0.456 0.342 0.041 0.143
 ## [23] 0.429 0.412 0.002 0.026 0.480 0.400 0.121 0.350 0.481 0.441 0.338
@@ -295,8 +296,8 @@ Call to run LISA computation
 ## [67] 0.015 0.334 0.069 0.303 0.040 0.132 0.001 0.002 0.470 0.007 0.213
 ## [78] 0.387 0.123 0.403 0.455 0.352 0.011 0.322 0.135</code></pre>
 <p>To get the cluster indicators of local Moran computation:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">cats &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a>
-<a class="sourceLine" id="cb50-2" data-line-number="2">cats</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">cats &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">cats</a></code></pre></div>
 <pre><code>##  [1] 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 2 2 0 0 0 0 0 0 0 0 0
 ## [36] 1 0 0 0 1 1 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 2 2 0 0 1 0 0 0 0 0 3 0 0 0
 ## [71] 2 0 2 2 0 2 0 0 0 0 0 0 3 0 0</code></pre>
@@ -309,8 +310,8 @@ Call to run LISA computation
 5 Neighborless
 6 Undefined</code></pre>
 <p>which can be accessed via function <code>GetLabels()</code>:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">lbls &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetLabels</span>()</a>
-<a class="sourceLine" id="cb53-2" data-line-number="2">lbls</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">lbls &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetLabels</span>()</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2">lbls</a></code></pre></div>
 <pre><code>## [1] &quot;Not significant&quot; &quot;High-High&quot;       &quot;Low-Low&quot;         &quot;High-Low&quot;       
 ## [5] &quot;Low-High&quot;        &quot;Undefined&quot;       &quot;Isolated&quot;</code></pre>
 <div class="rmdinfo">
@@ -323,13 +324,13 @@ Different LISA objects (e.g. local_geary()) will return different labels and co
 seed for random number generator: 123456789</code></pre>
 <p>, which are identical to GeoDa desktop software so that we can replicate the results in GeoDa software. It is also easy to change the paremter and re-run the LISA computation by calling Run() function.</p>
 <p>For example, re-run the above local Moran example using 9999 permutations</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">lisa<span class="op">$</span><span class="kw">SetPermutations</span>(<span class="dv">9999</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1">lisa<span class="op">$</span><span class="kw">SetPermutations</span>(<span class="dv">9999</span>)</a></code></pre></div>
 <pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">lisa<span class="op">$</span><span class="kw">Run</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">lisa<span class="op">$</span><span class="kw">Run</span>()</a></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>Then, we can use the same <code>lisa</code> object to get the new results after 9999 permutations:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">pvals &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetPValues</span>()</a>
-<a class="sourceLine" id="cb60-2" data-line-number="2">pvals</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">pvals &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetPValues</span>()</a>
+<a class="sourceLine" id="cb61-2" data-line-number="2">pvals</a></code></pre></div>
 <pre><code>##  [1] 0.4187 0.1265 0.0004 0.4679 0.4545 0.0728 0.2312 0.3071 0.3115 0.3088
 ## [11] 0.2187 0.4803 0.2623 0.0113 0.2000 0.1797 0.1267 0.0026 0.4565 0.3517
 ## [21] 0.0450 0.1367 0.4344 0.4231 0.0024 0.0366 0.4741 0.4164 0.1293 0.3310
@@ -340,11 +341,11 @@ seed for random number generator: 123456789</code></pre>
 ## [71] 0.0260 0.1331 0.0001 0.0001 0.4683 0.0067 0.2197 0.3718 0.1392 0.4054
 ## [81] 0.4420 0.3462 0.0039 0.3136 0.1288</code></pre>
 <p>rgeoda uses GeoDa’s C++ code, in which multi-threading is used to accelerate the computation of LISA. We can specify how many threads to run the computation:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">lisa<span class="op">$</span><span class="kw">SetThreads</span>(<span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">lisa<span class="op">$</span><span class="kw">SetThreads</span>(<span class="dv">4</span>)</a></code></pre></div>
 <pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">lisa<span class="op">$</span><span class="kw">Run</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">lisa<span class="op">$</span><span class="kw">Run</span>()</a></code></pre></div>
 <pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">lisa<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">lisa<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
 <pre><code>##  [1] 0.4187 0.1265 0.0004 0.4679 0.4545 0.0728 0.2312 0.3071 0.3115 0.3088
 ## [11] 0.2187 0.4834 0.2686 0.0102 0.2024 0.1795 0.1218 0.0025 0.4590 0.3588
 ## [21] 0.0476 0.1456 0.4344 0.4231 0.0024 0.0366 0.4741 0.4164 0.1293 0.3310
@@ -359,14 +360,14 @@ seed for random number generator: 123456789</code></pre>
 <h2><span class="header-section-number">5.3</span> Local Geary</h2>
 <p>Local Geary is a type of LISA that focuses on squared differences/dissimilarity. A small value of the local geary statistics suggest positive spatial autocorrelation, whereas large values suggest negative spatial autocorrelation.</p>
 <p>For example, we can call the function <code>local_geary()</code> with the created Queen weights and the data “crm_prp” as input parameters:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1">geary_crmprs &lt;-<span class="st"> </span><span class="kw">local_geary</span>(queen_w, crm_prp)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">geary_crmprs &lt;-<span class="st"> </span><span class="kw">local_geary</span>(queen_w, crm_prp)</a></code></pre></div>
 <p>To get the cluster indicators of the local Geary computation:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">geary_crmprs<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">geary_crmprs<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a></code></pre></div>
 <pre><code>##  [1] 0 2 4 0 3 0 0 0 0 0 0 0 0 0 0 0 0 1 0 2 1 0 0 0 2 2 0 0 0 0 0 0 0 4 0
 ## [36] 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 ## [71] 2 0 0 2 0 0 0 0 0 0 0 0 4 0 0</code></pre>
 <p>To get the pseudo-p values of the local Geary computation:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1">geary_crmprs<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">geary_crmprs<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
 <pre><code>##  [1] 0.398 0.027 0.025 0.126 0.017 0.314 0.610 0.141 0.284 0.110 0.559
 ## [12] 0.462 0.211 0.236 0.249 0.229 0.069 0.041 0.205 0.020 0.029 0.178
 ## [23] 0.369 0.112 0.024 0.027 0.092 0.420 0.488 0.051 0.377 0.253 0.217
@@ -381,14 +382,14 @@ seed for random number generator: 123456789</code></pre>
 <p>There are two types of local Getis-Ord statistics: one is computing a ratio of the weighted average of the values in the neighboring locations, not including the value at the location; while another type of statistic includes the value at the location in both numerator and denominator.</p>
 <p>A value larger than the mean suggests a high-high cluster or hot spot, a value smaller than the mean indicates a low-low cluster or cold spot.</p>
 <p>For example, we can call the function <code>local_g()</code> with the created Queen weights and the data “crm_prp” as input parameters:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">localg_crmprs &lt;-<span class="st"> </span><span class="kw">local_g</span>(queen_w, crm_prp)</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">localg_crmprs &lt;-<span class="st"> </span><span class="kw">local_g</span>(queen_w, crm_prp)</a></code></pre></div>
 <p>To get the cluster indicators of the local G computation:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">localg_crmprs<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">localg_crmprs<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a></code></pre></div>
 <pre><code>##  [1] 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 2 2 0 0 0 0 0 0 0 0 0
 ## [36] 1 0 0 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 2 2 0 0 1 0 0 0 0 0 1 0 0 0
 ## [71] 2 0 2 2 0 2 0 0 0 0 0 0 1 0 0</code></pre>
 <p>To get the pseudo-p values of the local G computation:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">localg_crmprs<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">localg_crmprs<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
 <pre><code>##  [1] 0.414 0.123 0.001 0.474 0.452 0.087 0.243 0.326 0.299 0.303 0.237
 ## [12] 0.460 0.258 0.018 0.199 0.188 0.131 0.004 0.456 0.342 0.041 0.143
 ## [23] 0.429 0.412 0.002 0.026 0.479 0.400 0.121 0.350 0.481 0.441 0.338
@@ -398,30 +399,30 @@ seed for random number generator: 123456789</code></pre>
 ## [67] 0.015 0.334 0.069 0.303 0.039 0.132 0.001 0.002 0.470 0.007 0.213
 ## [78] 0.387 0.123 0.403 0.455 0.352 0.011 0.322 0.135</code></pre>
 <p>For the second type of local Getis-Ord statistics, we can call the function <code>local_gstar()</code> with the created Queen weights and the data “crm_prp” as input parameters:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">localgstar_crmprs &lt;-<span class="st"> </span><span class="kw">local_gstar</span>(queen_w, crm_prp)</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">localgstar_crmprs &lt;-<span class="st"> </span><span class="kw">local_gstar</span>(queen_w, crm_prp)</a></code></pre></div>
 </div>
 <div id="local-join-count" class="section level2">
 <h2><span class="header-section-number">5.5</span> Local Join Count</h2>
 <p>Local Join Count is a method to identify local clusters for binary data by using a local version of the so-called BB join count statistic. The statistic is only meaningful for those observations with value 1.</p>
 <p>For example, we can load the columbus dataset, and call the function <code>local_joincount()</code> with a Queen weights and the data “nsa”, which is a set of binary (0,1) values, as input parameters:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">columbus_path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;columbus.shp&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rgeoda&quot;</span>)</a>
-<a class="sourceLine" id="cb79-2" data-line-number="2">columbus &lt;-<span class="st"> </span><span class="kw">geoda_open</span>(columbus_path)</a>
-<a class="sourceLine" id="cb79-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb79-4" data-line-number="4">columbus_w &lt;-<span class="st"> </span><span class="kw">queen_weights</span>(columbus)</a>
-<a class="sourceLine" id="cb79-5" data-line-number="5">localjc_crmprs &lt;-<span class="st"> </span><span class="kw">local_joincount</span>(columbus_w, columbus<span class="op">$</span>table<span class="op">$</span>nsa)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">columbus_path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;columbus.shp&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rgeoda&quot;</span>)</a>
+<a class="sourceLine" id="cb80-2" data-line-number="2">columbus &lt;-<span class="st"> </span><span class="kw">geoda_open</span>(columbus_path)</a>
+<a class="sourceLine" id="cb80-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb80-4" data-line-number="4">columbus_w &lt;-<span class="st"> </span><span class="kw">queen_weights</span>(columbus)</a>
+<a class="sourceLine" id="cb80-5" data-line-number="5">localjc_crmprs &lt;-<span class="st"> </span><span class="kw">local_joincount</span>(columbus_w, columbus<span class="op">$</span>table<span class="op">$</span>nsa)</a></code></pre></div>
 <p>To get the cluster indicators of the local Join Count computation:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">localjc_crmprs<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1">localjc_crmprs<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a></code></pre></div>
 <pre><code>##  [1] 0 0 1 1 1 0 1 1 1 0 1 1 1 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 ## [36] 0 0 0 0 0 0 0 0 0 0 0 0 0 0</code></pre>
 <p>To get the pseudo-p values of the local Join Count computation:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">localjc_crmprs<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1">localjc_crmprs<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
 <pre><code>##  [1] 0.213 0.070 0.017 0.010 0.001 0.234 0.018 0.007 0.006 0.275 0.017
 ## [12] 0.008 0.043 0.004 0.002 0.001 0.147 0.049 0.087 0.001 0.001 0.372
 ## [23] 0.001 0.450 0.287 0.249 0.001 0.001 0.001 0.001 0.001 0.001 0.001
 ## [34] 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001
 ## [45] 0.001 0.001 0.001 0.001 0.001</code></pre>
 <p>To get the number of neighbors of the local Join Count computation:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">localjc_crmprs<span class="op">$</span><span class="kw">GetNumNeighbors</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">localjc_crmprs<span class="op">$</span><span class="kw">GetNumNeighbors</span>()</a></code></pre></div>
 <pre><code>##  [1]  2  3  4  5  8  2  5  6  8  4  5  6  4  6  6  8  3  4  3 10  3  6  3
 ## [24]  7  8  6  4  9  7  5  3  4  4  4  7  5  6  6  3  5  3  2  6  5  4  2
 ## [47]  2  4  3</code></pre>
@@ -466,14 +467,14 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-spatialautocorrelation.Rmd",
+"link": "https://github.com/rgeoda/rgeoda-book/edit/master/04-spatialautocorrelation.Rmd",
 "text": "Edit"
 },
 "history": {
 "link": null,
 "text": null
 },
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"download": ["rgeoda-book.pdf", "rgeoda-book.epub"],
 "toc": {
 "collapse": "subsection"
 }
@@ -481,6 +482,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

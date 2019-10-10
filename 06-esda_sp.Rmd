@@ -61,8 +61,17 @@ Now, with the geoda object `guerry`, you can call rgeoda’s spatial analysis fu
 
 ```{r}
 queen_w <- queen_weights(guerry)
-crm_prp <- as.numeric(guerry_sp$Crm_prp)
+crm_prp <- as.numeric(as.character(guerry_sp$Crm_prp))
 ```
+
+
+```{block, type='rmdnote'}
+Why are we using `as.numeric(as.character(guerry_sp$Crm_prp))`?
+
+As we can see from the output of `readOGR(guerry_path)` that: _"Integer64 fields read as strings:  dept Crm_prs Crm_prp Litercy Donatns Infants Suicids MainCty_", so `guerry_sp$Crm_prp` is with data type `factor`, so `as.numeric(as.character())` is used to convert it to a column with numeric values without lossing precisions.
+```
+
+
 ### Local Moran Map
 
 ```{r}
@@ -104,9 +113,9 @@ p_labels <- c("Not significant", "p <= 0.05", "p <= 0.01", "p <= 0.001")
 p_colors <- c("#eeeeee", "#84f576", "#53c53c", "#348124")
 plot(guerry_sp, 
      col=sapply(lisa_p, function(x){
-       if (x <= 0.05) return(p_colors[2])
+       if (x <= 0.001) return(p_colors[2])
        else if (x <= 0.01) return(p_colors[3])
-       else if (x <= 0.001) return (p_colors[4])
+       else if (x <= 0.05) return (p_colors[4])
        else return(p_colors[1])
        }), 
      border = "#333333", lwd=0.2)
@@ -153,11 +162,11 @@ legend('bottomleft', legend = lisa_labels, fill = lisa_colors, border = "#eeeeee
 To create a map of SKATER clustering map:
 
 ```{r}
-Crm_prp <- as.numeric(guerry_sp$Crm_prp)
-Litercy <- as.numeric(guerry_sp$Litercy)
-Donatns <- as.numeric(guerry_sp$Donatns)
-Infants <- as.numeric(guerry_sp$Infants)
-Suicids <- as.numeric(guerry_sp$Suicids)
+Crm_prp <- as.numeric(as.character(guerry_sp$Crm_prp))
+Litercy <- as.numeric(as.character(guerry_sp$Litercy))
+Donatns <- as.numeric(as.character(guerry_sp$Donatns))
+Infants <- as.numeric(as.character(guerry_sp$Infants))
+Suicids <- as.numeric(as.character(guerry_sp$Suicids))
 data <- list(crm_prp, Crm_prp, Donatns, Infants, Suicids)
 guerry_clusters <- skater(4, queen_w, data)
 
@@ -178,6 +187,14 @@ plot(guerry_sp,  col=colors, border = "#333333", lwd=0.2)
 title(main = "SKATER Clustering Map")
 legend('bottomleft', legend = skater_labels, fill = skater_colors, border = "#eeeeee")
 ```
+
+
+```{block, type='rmdnote'}
+Why are we using `as.numeric(as.character(guerry_sp$Crm_prp))`?
+
+As we can see from the output of `readOGR(guerry_path)` that: _"Integer64 fields read as strings:  dept Crm_prs Crm_prp Litercy Donatns Infants Suicids MainCty_", so `guerry_sp$Crm_prp` is with data type `factor`, so `as.numeric(as.character())` is used to convert it to a column with numeric values without lossing precisions.
+```
+
 
 ### Max-p Clustering Map
 

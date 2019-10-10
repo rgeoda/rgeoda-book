@@ -24,7 +24,7 @@
 <meta name="author" content="Xun Li" />
 
 
-<meta name="date" content="2019-10-09" />
+<meta name="date" content="2019-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -136,8 +136,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#mac-and-linux"><i class="fa fa-check"></i><b>2.1</b> Mac and Linux</a></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.2</b> Windows</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.3</b> Load rgeoda library in R</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#linux"><i class="fa fa-check"></i><b>2.2</b> Linux</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.3</b> Windows</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.4</b> Load rgeoda library in R</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="load-spatial-data.html"><a href="load-spatial-data.html"><i class="fa fa-check"></i><b>3</b> Load Spatial Data</a><ul>
 <li class="chapter" data-level="3.1" data-path="load-spatial-data.html"><a href="load-spatial-data.html#attributes-of-geoda-object"><i class="fa fa-check"></i><b>3.1</b> Attributes of <code>geoda</code> object</a></li>
@@ -189,7 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/rgeoda/rgeoda-book" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -213,17 +214,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Like GeoDa desktop software, rgeoda are avaiable to different platforms including: Mac, Linux and Windows.</p>
 <div id="mac-and-linux" class="section level2">
 <h2><span class="header-section-number">2.1</span> Mac and Linux</h2>
-<p>In R console, use install.packages() function to install rgeoda from its <strong>source pacakge</strong> at: <a href="https://github.com/lixun910/rgeoda/archive/0.0.3.tar.gz" class="uri">https://github.com/lixun910/rgeoda/archive/0.0.3.tar.gz</a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;https://github.com/lixun910/rgeoda/archive/0.0.3.tar.gz&quot;</span>)</a>
+<p>In R console, use install.packages() function to install rgeoda from its <strong>binary pacakge</strong> at: <a href="https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3_osx.tgz" class="uri">https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3_osx.tgz</a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3_osx.tgz&quot;</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"># or the development version</span></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co"># devtools::install_github(&quot;lixun910/rgeoda&quot;)</span></a></code></pre></div>
 </div>
-<div id="windows" class="section level2">
-<h2><span class="header-section-number">2.2</span> Windows</h2>
-<p>In R console, one can use install.packages() function to install rgeoda from its <strong>binary pacakge</strong> at: <a href="https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.zip" class="uri">https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.zip</a></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.zip&quot;</span>)</a>
+<div id="linux" class="section level2">
+<h2><span class="header-section-number">2.2</span> Linux</h2>
+<p>In R console, use install.packages() function to install rgeoda from its <strong>source pacakge</strong> at: <a href="https://github.com/lixun910/rgeoda/archive/0.0.3.tar.gz" class="uri">https://github.com/lixun910/rgeoda/archive/0.0.3.tar.gz</a></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;https://github.com/lixun910/rgeoda/archive/0.0.3.tar.gz&quot;</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co"># or the development version</span></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co"># devtools::install_github(&quot;lixun910/rgeoda&quot;)</span></a></code></pre></div>
+</div>
+<div id="windows" class="section level2">
+<h2><span class="header-section-number">2.3</span> Windows</h2>
+<p>In R console, one can use install.packages() function to install rgeoda from its <strong>binary pacakge</strong> at: <a href="https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.zip" class="uri">https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.zip</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.zip&quot;</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># or the development version</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co"># devtools::install_github(&quot;lixun910/rgeoda&quot;)</span></a></code></pre></div>
 <div class="rmdwarn">
 <p>
 Install rgeoda on windows from source package is not recommended. You would try if you know how to deal with <a href="https://www.r-project.org/nosvn/pandoc/devtools.html">R devtools</a> on windows.
@@ -231,9 +239,9 @@ Install rgeoda on windows from source package is not recommended. You would try 
 </div>
 </div>
 <div id="load-rgeoda-library-in-r" class="section level2">
-<h2><span class="header-section-number">2.3</span> Load rgeoda library in R</h2>
+<h2><span class="header-section-number">2.4</span> Load rgeoda library in R</h2>
 <p>If everything installed without error, you should be able to load rgeoda:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(rgeoda)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(rgeoda)</a></code></pre></div>
 <div class="rmdinfo">
 <p>
 We are working to make rgeoda avaiable in CRAN, so that it could be installed easily (target in 0.1.0 version).
@@ -280,14 +288,14 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-install.Rmd",
+"link": "https://github.com/rgeoda/rgeoda-book/edit/master/01-install.Rmd",
 "text": "Edit"
 },
 "history": {
 "link": null,
 "text": null
 },
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"download": ["rgeoda-book.pdf", "rgeoda-book.epub"],
 "toc": {
 "collapse": "subsection"
 }
@@ -295,6 +303,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
