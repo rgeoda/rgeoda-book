@@ -138,10 +138,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#open-resources"><i class="fa fa-check"></i><b>1.2</b> Open Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#mac"><i class="fa fa-check"></i><b>2.1</b> Mac</a></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.2</b> Windows</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#linux"><i class="fa fa-check"></i><b>2.3</b> Linux</a></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.4</b> Load rgeoda library in R</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#dependencies"><i class="fa fa-check"></i><b>2.1</b> Dependencies</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#mac"><i class="fa fa-check"></i><b>2.2</b> Mac</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.3</b> Windows</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#linux"><i class="fa fa-check"></i><b>2.4</b> Linux</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.5</b> Load rgeoda library in R</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="load-spatial-data.html"><a href="load-spatial-data.html"><i class="fa fa-check"></i><b>3</b> Load Spatial Data</a><ul>
 <li class="chapter" data-level="3.1" data-path="load-spatial-data.html"><a href="load-spatial-data.html#attributes-of-geoda-object"><i class="fa fa-check"></i><b>3.1</b> Attributes of <code>geoda</code> object</a></li>
@@ -221,11 +222,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.1</span> Start from sp package</h2>
 <p>The sp package has been an essential tool which provides spatial data-structures and many utility functions to do spatial analysis in R. It has been a core dependent library for many other packages, e.g. rgdal (IO), maptools (mapping), spdep (spatial weights, spatial statistics, and spatial models) etc.</p>
 <p>Using rgdal to read a ESRI Shapefile will return a sp (Spatial object) object, which could be either a SpatialPointsDataFrame (using an AttributeList for its data slot directly), a SpatialLinesDataFrame, or a SpatialPolygonsDataFrame.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="co"># use the Guerry.shp comes with the rgeoda package</span></a>
-<a class="sourceLine" id="cb106-2" data-line-number="2">guerry_path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;Guerry.shp&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rgeoda&quot;</span>)</a>
-<a class="sourceLine" id="cb106-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb106-4" data-line-number="4"><span class="co"># load rgdal library which sp is working with</span></a>
-<a class="sourceLine" id="cb106-5" data-line-number="5"><span class="kw">library</span>(rgdal)</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="co"># use the Guerry.shp comes with the rgeoda package</span></a>
+<a class="sourceLine" id="cb108-2" data-line-number="2">guerry_path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;Guerry.shp&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rgeoda&quot;</span>)</a>
+<a class="sourceLine" id="cb108-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb108-4" data-line-number="4"><span class="co"># load rgdal library which sp is working with</span></a>
+<a class="sourceLine" id="cb108-5" data-line-number="5"><span class="kw">library</span>(rgdal)</a></code></pre></div>
 <pre><code>## Loading required package: sp</code></pre>
 <pre><code>## rgdal: version: 1.4-4, (SVN revision 833)
 ##  Geospatial Data Abstraction Library extensions to R successfully loaded
@@ -241,23 +242,23 @@ Note: to install rgdal library in R, you can run: install.packages(‘rgdal’)
 </p>
 </div>
 <p>Then, we can call <code>readOGR()</code> function to read Guerry.shp file and this function will returns an <code>sp</code> object</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1">guerry_sp &lt;-<span class="st"> </span><span class="kw">readOGR</span>(guerry_path)</a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">guerry_sp &lt;-<span class="st"> </span><span class="kw">readOGR</span>(guerry_path)</a></code></pre></div>
 <pre><code>## OGR data source with driver: ESRI Shapefile 
 ## Source: &quot;/usr/local/lib/R/3.6/site-library/rgeoda/extdata/Guerry.shp&quot;, layer: &quot;Guerry&quot;
 ## with 85 features
 ## It has 26 fields
 ## Integer64 fields read as strings:  dept Crm_prs Crm_prp Litercy Donatns Infants Suicids MainCty Wealth Commerc Clergy Crm_prn Infntcd Dntn_cl Lottery Desertn Instrct Prsttts Area</code></pre>
 <p>You can simply call plot() function to plot this map:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="kw">plot</span>(guerry_sp)</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="kw">plot</span>(guerry_sp)</a></code></pre></div>
 <p><img src="rgeoda-book_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 </div>
 <div id="create-geoda-object-from-sp" class="section level2">
 <h2><span class="header-section-number">7.2</span> Create geoda object from sp</h2>
 <p>Everything above should be very familiar with you, right? Then, the fun part of spatial data analysis is going to start:</p>
 <p>Create a geoda object from the sp object guerry_sp you just created.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="kw">library</span>(rgeoda)</a>
-<a class="sourceLine" id="cb112-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb112-3" data-line-number="3">guerry &lt;-<span class="st"> </span><span class="kw">sp_to_geoda</span>(guerry_sp)</a></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="kw">library</span>(rgeoda)</a>
+<a class="sourceLine" id="cb114-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb114-3" data-line-number="3">guerry &lt;-<span class="st"> </span><span class="kw">sp_to_geoda</span>(guerry_sp)</a></code></pre></div>
 <pre><code>## Loading required package: wkb</code></pre>
 <p>That’s it! It should be very fast: rgeoda uses <code>wkb</code>, which is a binary representation of geometries, to exchange data between sp and rgeoda in memory.</p>
 <div class="rmdinfo">
@@ -269,8 +270,8 @@ By default, sp_to_geoda() only using geometries to create a geoda object, which 
 <div id="esda-with-rgeoda-and-sp-1" class="section level2">
 <h2><span class="header-section-number">7.3</span> ESDA with rgeoda and sp</h2>
 <p>Now, with the geoda object <code>guerry</code>, you can call rgeoda’s spatial analysis functions. For example, to examine the local Moran statistics of variable “crm_prs” (Population per Crime against persons):</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">queen_w &lt;-<span class="st"> </span><span class="kw">queen_weights</span>(guerry)</a>
-<a class="sourceLine" id="cb114-2" data-line-number="2">crm_prp &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Crm_prp))</a></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">queen_w &lt;-<span class="st"> </span><span class="kw">queen_weights</span>(guerry)</a>
+<a class="sourceLine" id="cb116-2" data-line-number="2">crm_prp &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Crm_prp))</a></code></pre></div>
 <div class="rmdnote">
 <p>
 Why are we using <code>as.numeric(as.character(guerry_sp<span class="math inline">\(Crm_prp))&lt;/code&gt;?&lt;/p&gt; &lt;p&gt;As we can see from the output of &lt;code&gt;readOGR(guerry_path)&lt;/code&gt; that: _“Integer64 fields read as strings: dept Crm_prs Crm_prp Litercy Donatns Infants Suicids MainCty_”, so &lt;code&gt;guerry_sp\)</span>Crm_prp</code> is with data type <code>factor</code>, so <code>as.numeric(as.character())</code> is used to convert it to a column with numeric values without lossing precisions.
@@ -278,99 +279,99 @@ Why are we using <code>as.numeric(as.character(guerry_sp<span class="math inline
 </div>
 <div id="local-moran-map" class="section level3">
 <h3><span class="header-section-number">7.3.1</span> Local Moran Map</h3>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">lisa &lt;-<span class="st"> </span><span class="kw">local_moran</span>(queen_w, crm_prp)</a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1">lisa &lt;-<span class="st"> </span><span class="kw">local_moran</span>(queen_w, crm_prp)</a></code></pre></div>
 <p>Now, with the LISA results, we can do exploratory spatial data analysis by generating a LISA cluster map:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">lisa_colors &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetColors</span>() </a>
-<a class="sourceLine" id="cb116-2" data-line-number="2">lisa_labels &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetLabels</span>()</a>
-<a class="sourceLine" id="cb116-3" data-line-number="3">lisa_clusters &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a>
-<a class="sourceLine" id="cb116-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb116-5" data-line-number="5"><span class="kw">plot</span>(guerry_sp, </a>
-<a class="sourceLine" id="cb116-6" data-line-number="6">     <span class="dt">col=</span><span class="kw">sapply</span>(lisa_clusters, <span class="cf">function</span>(x){<span class="kw">return</span>(lisa_colors[[x<span class="op">+</span><span class="dv">1</span>]])}), </a>
-<a class="sourceLine" id="cb116-7" data-line-number="7">     <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb116-8" data-line-number="8"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Local Moran Map of Crm_prp&quot;</span>)</a>
-<a class="sourceLine" id="cb116-9" data-line-number="9"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> lisa_labels, <span class="dt">fill =</span> lisa_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">lisa_colors &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetColors</span>() </a>
+<a class="sourceLine" id="cb118-2" data-line-number="2">lisa_labels &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetLabels</span>()</a>
+<a class="sourceLine" id="cb118-3" data-line-number="3">lisa_clusters &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a>
+<a class="sourceLine" id="cb118-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb118-5" data-line-number="5"><span class="kw">plot</span>(guerry_sp, </a>
+<a class="sourceLine" id="cb118-6" data-line-number="6">     <span class="dt">col=</span><span class="kw">sapply</span>(lisa_clusters, <span class="cf">function</span>(x){<span class="kw">return</span>(lisa_colors[[x<span class="op">+</span><span class="dv">1</span>]])}), </a>
+<a class="sourceLine" id="cb118-7" data-line-number="7">     <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
+<a class="sourceLine" id="cb118-8" data-line-number="8"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Local Moran Map of Crm_prp&quot;</span>)</a>
+<a class="sourceLine" id="cb118-9" data-line-number="9"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> lisa_labels, <span class="dt">fill =</span> lisa_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
 <p><img src="rgeoda-book_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 <p>From the above code, you can see that we still use <code>sp</code> object to do plotting. The values of cluster indicators from rgeoda’s <code>LISA</code> object are used to make the LISA map.This emphasis that rgeoda is a API focused library, which only provides the core functions of spatial data analysis for easy integration.</p>
 <p>You can easily append the lisa results to original sp object by manipulating the data.frame object inside the sp object.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1">guerry_sp<span class="op">$</span>moran_cluster &lt;-<span class="st"> </span>lisa_clusters</a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">guerry_sp<span class="op">$</span>moran_cluster &lt;-<span class="st"> </span>lisa_clusters</a></code></pre></div>
 <p>If you check the values of the cluster indicators, you will see they are integer numbers 0 (not significant), 1 (high-high cluster), 2 (low-low cluster), 3 (low-high cluster), 4 (high-low cluster), 5 (neighborless/island), 6 (undefined), which are excatly the same with GeoDa software when you save LISA results to a table:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">lisa_clusters</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">lisa_clusters</a></code></pre></div>
 <pre><code>##  [1] 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 2 2 0 0 0 0 0 0 0 0 0
 ## [36] 1 0 0 0 1 1 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 2 2 0 0 1 0 0 0 0 0 3 0 0 0
 ## [71] 2 0 2 2 0 2 0 0 0 0 0 0 3 0 0</code></pre>
 <p>To create a siginificant map that is associated with the Local Moran map:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">lisa_p &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetPValues</span>()</a>
-<a class="sourceLine" id="cb120-2" data-line-number="2">p_labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Not significant&quot;</span>, <span class="st">&quot;p &lt;= 0.05&quot;</span>, <span class="st">&quot;p &lt;= 0.01&quot;</span>, <span class="st">&quot;p &lt;= 0.001&quot;</span>)</a>
-<a class="sourceLine" id="cb120-3" data-line-number="3">p_colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#eeeeee&quot;</span>, <span class="st">&quot;#84f576&quot;</span>, <span class="st">&quot;#53c53c&quot;</span>, <span class="st">&quot;#348124&quot;</span>)</a>
-<a class="sourceLine" id="cb120-4" data-line-number="4"><span class="kw">plot</span>(guerry_sp, </a>
-<a class="sourceLine" id="cb120-5" data-line-number="5">     <span class="dt">col=</span><span class="kw">sapply</span>(lisa_p, <span class="cf">function</span>(x){</a>
-<a class="sourceLine" id="cb120-6" data-line-number="6">       <span class="cf">if</span> (x <span class="op">&lt;=</span><span class="st"> </span><span class="fl">0.001</span>) <span class="kw">return</span>(p_colors[<span class="dv">2</span>])</a>
-<a class="sourceLine" id="cb120-7" data-line-number="7">       <span class="cf">else</span> <span class="cf">if</span> (x <span class="op">&lt;=</span><span class="st"> </span><span class="fl">0.01</span>) <span class="kw">return</span>(p_colors[<span class="dv">3</span>])</a>
-<a class="sourceLine" id="cb120-8" data-line-number="8">       <span class="cf">else</span> <span class="cf">if</span> (x <span class="op">&lt;=</span><span class="st"> </span><span class="fl">0.05</span>) <span class="kw">return</span> (p_colors[<span class="dv">4</span>])</a>
-<a class="sourceLine" id="cb120-9" data-line-number="9">       <span class="cf">else</span> <span class="kw">return</span>(p_colors[<span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb120-10" data-line-number="10">       }), </a>
-<a class="sourceLine" id="cb120-11" data-line-number="11">     <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb120-12" data-line-number="12"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Local Moran Map of Crm_prp&quot;</span>)</a>
-<a class="sourceLine" id="cb120-13" data-line-number="13"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> p_labels, <span class="dt">fill =</span> p_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">lisa_p &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetPValues</span>()</a>
+<a class="sourceLine" id="cb122-2" data-line-number="2">p_labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Not significant&quot;</span>, <span class="st">&quot;p &lt;= 0.05&quot;</span>, <span class="st">&quot;p &lt;= 0.01&quot;</span>, <span class="st">&quot;p &lt;= 0.001&quot;</span>)</a>
+<a class="sourceLine" id="cb122-3" data-line-number="3">p_colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#eeeeee&quot;</span>, <span class="st">&quot;#84f576&quot;</span>, <span class="st">&quot;#53c53c&quot;</span>, <span class="st">&quot;#348124&quot;</span>)</a>
+<a class="sourceLine" id="cb122-4" data-line-number="4"><span class="kw">plot</span>(guerry_sp, </a>
+<a class="sourceLine" id="cb122-5" data-line-number="5">     <span class="dt">col=</span><span class="kw">sapply</span>(lisa_p, <span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb122-6" data-line-number="6">       <span class="cf">if</span> (x <span class="op">&lt;=</span><span class="st"> </span><span class="fl">0.001</span>) <span class="kw">return</span>(p_colors[<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb122-7" data-line-number="7">       <span class="cf">else</span> <span class="cf">if</span> (x <span class="op">&lt;=</span><span class="st"> </span><span class="fl">0.01</span>) <span class="kw">return</span>(p_colors[<span class="dv">3</span>])</a>
+<a class="sourceLine" id="cb122-8" data-line-number="8">       <span class="cf">else</span> <span class="cf">if</span> (x <span class="op">&lt;=</span><span class="st"> </span><span class="fl">0.05</span>) <span class="kw">return</span> (p_colors[<span class="dv">4</span>])</a>
+<a class="sourceLine" id="cb122-9" data-line-number="9">       <span class="cf">else</span> <span class="kw">return</span>(p_colors[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb122-10" data-line-number="10">       }), </a>
+<a class="sourceLine" id="cb122-11" data-line-number="11">     <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
+<a class="sourceLine" id="cb122-12" data-line-number="12"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Local Moran Map of Crm_prp&quot;</span>)</a>
+<a class="sourceLine" id="cb122-13" data-line-number="13"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> p_labels, <span class="dt">fill =</span> p_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
 <p><img src="rgeoda-book_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 </div>
 <div id="local-geary-map" class="section level3">
 <h3><span class="header-section-number">7.3.2</span> Local Geary Map</h3>
 <p>Another example is to create a map of local Geary:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">lisa &lt;-<span class="st"> </span><span class="kw">local_geary</span>(queen_w, crm_prp)</a>
-<a class="sourceLine" id="cb121-2" data-line-number="2">lisa_colors &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetColors</span>() </a>
-<a class="sourceLine" id="cb121-3" data-line-number="3">lisa_labels &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetLabels</span>()</a>
-<a class="sourceLine" id="cb121-4" data-line-number="4">lisa_clusters &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a>
-<a class="sourceLine" id="cb121-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb121-6" data-line-number="6"><span class="kw">plot</span>(guerry_sp, </a>
-<a class="sourceLine" id="cb121-7" data-line-number="7">     <span class="dt">col=</span><span class="kw">sapply</span>(lisa_clusters, <span class="cf">function</span>(x){<span class="kw">return</span>(lisa_colors[[x<span class="op">+</span><span class="dv">1</span>]])}), </a>
-<a class="sourceLine" id="cb121-8" data-line-number="8">     <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb121-9" data-line-number="9"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Local Geary Map of Crm_prp&quot;</span>)</a>
-<a class="sourceLine" id="cb121-10" data-line-number="10"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> lisa_labels, <span class="dt">fill =</span> lisa_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">lisa &lt;-<span class="st"> </span><span class="kw">local_geary</span>(queen_w, crm_prp)</a>
+<a class="sourceLine" id="cb123-2" data-line-number="2">lisa_colors &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetColors</span>() </a>
+<a class="sourceLine" id="cb123-3" data-line-number="3">lisa_labels &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetLabels</span>()</a>
+<a class="sourceLine" id="cb123-4" data-line-number="4">lisa_clusters &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a>
+<a class="sourceLine" id="cb123-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb123-6" data-line-number="6"><span class="kw">plot</span>(guerry_sp, </a>
+<a class="sourceLine" id="cb123-7" data-line-number="7">     <span class="dt">col=</span><span class="kw">sapply</span>(lisa_clusters, <span class="cf">function</span>(x){<span class="kw">return</span>(lisa_colors[[x<span class="op">+</span><span class="dv">1</span>]])}), </a>
+<a class="sourceLine" id="cb123-8" data-line-number="8">     <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
+<a class="sourceLine" id="cb123-9" data-line-number="9"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Local Geary Map of Crm_prp&quot;</span>)</a>
+<a class="sourceLine" id="cb123-10" data-line-number="10"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> lisa_labels, <span class="dt">fill =</span> lisa_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
 <p><img src="rgeoda-book_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 </div>
 <div id="local-g-map" class="section level3">
 <h3><span class="header-section-number">7.3.3</span> Local G Map</h3>
 <p>To create a map of local G:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">lisa &lt;-<span class="st"> </span><span class="kw">local_g</span>(queen_w, crm_prp)</a>
-<a class="sourceLine" id="cb122-2" data-line-number="2">lisa_colors &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetColors</span>() </a>
-<a class="sourceLine" id="cb122-3" data-line-number="3">lisa_labels &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetLabels</span>()</a>
-<a class="sourceLine" id="cb122-4" data-line-number="4">lisa_clusters &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a>
-<a class="sourceLine" id="cb122-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb122-6" data-line-number="6"><span class="kw">plot</span>(guerry_sp, </a>
-<a class="sourceLine" id="cb122-7" data-line-number="7">     <span class="dt">col=</span><span class="kw">sapply</span>(lisa_clusters, <span class="cf">function</span>(x){<span class="kw">return</span>(lisa_colors[[x<span class="op">+</span><span class="dv">1</span>]])}), </a>
-<a class="sourceLine" id="cb122-8" data-line-number="8">     <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb122-9" data-line-number="9"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Local Getis-Ord&#39;s G Map of Crm_prp&quot;</span>)</a>
-<a class="sourceLine" id="cb122-10" data-line-number="10"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> lisa_labels, <span class="dt">fill =</span> lisa_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">lisa &lt;-<span class="st"> </span><span class="kw">local_g</span>(queen_w, crm_prp)</a>
+<a class="sourceLine" id="cb124-2" data-line-number="2">lisa_colors &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetColors</span>() </a>
+<a class="sourceLine" id="cb124-3" data-line-number="3">lisa_labels &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetLabels</span>()</a>
+<a class="sourceLine" id="cb124-4" data-line-number="4">lisa_clusters &lt;-<span class="st"> </span>lisa<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a>
+<a class="sourceLine" id="cb124-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb124-6" data-line-number="6"><span class="kw">plot</span>(guerry_sp, </a>
+<a class="sourceLine" id="cb124-7" data-line-number="7">     <span class="dt">col=</span><span class="kw">sapply</span>(lisa_clusters, <span class="cf">function</span>(x){<span class="kw">return</span>(lisa_colors[[x<span class="op">+</span><span class="dv">1</span>]])}), </a>
+<a class="sourceLine" id="cb124-8" data-line-number="8">     <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
+<a class="sourceLine" id="cb124-9" data-line-number="9"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Local Getis-Ord&#39;s G Map of Crm_prp&quot;</span>)</a>
+<a class="sourceLine" id="cb124-10" data-line-number="10"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> lisa_labels, <span class="dt">fill =</span> lisa_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
 <p><img src="rgeoda-book_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 </div>
 <div id="skater-map" class="section level3">
 <h3><span class="header-section-number">7.3.4</span> SKATER Map</h3>
 <p>To create a map of SKATER clustering map:</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">Crm_prp &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Crm_prp))</a>
-<a class="sourceLine" id="cb123-2" data-line-number="2">Litercy &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Litercy))</a>
-<a class="sourceLine" id="cb123-3" data-line-number="3">Donatns &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Donatns))</a>
-<a class="sourceLine" id="cb123-4" data-line-number="4">Infants &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Infants))</a>
-<a class="sourceLine" id="cb123-5" data-line-number="5">Suicids &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Suicids))</a>
-<a class="sourceLine" id="cb123-6" data-line-number="6">data &lt;-<span class="st"> </span><span class="kw">list</span>(crm_prp, Crm_prp, Donatns, Infants, Suicids)</a>
-<a class="sourceLine" id="cb123-7" data-line-number="7">guerry_clusters &lt;-<span class="st"> </span><span class="kw">skater</span>(<span class="dv">4</span>, queen_w, data)</a>
-<a class="sourceLine" id="cb123-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb123-9" data-line-number="9"><span class="co"># Get some colors for each clusters</span></a>
-<a class="sourceLine" id="cb123-10" data-line-number="10">skater_colors &lt;-<span class="st"> </span><span class="kw">palette</span>()[<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb123-11" data-line-number="11">skater_labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;c3&quot;</span>,<span class="st">&quot;c4&quot;</span>)</a>
-<a class="sourceLine" id="cb123-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb123-13" data-line-number="13"><span class="co"># Assign a color for each observation</span></a>
-<a class="sourceLine" id="cb123-14" data-line-number="14">colors &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;#000000&quot;</span>, queen_w<span class="op">$</span>num_obs)</a>
-<a class="sourceLine" id="cb123-15" data-line-number="15"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</a>
-<a class="sourceLine" id="cb123-16" data-line-number="16">  <span class="cf">for</span> (j <span class="cf">in</span> guerry_clusters[i]) {</a>
-<a class="sourceLine" id="cb123-17" data-line-number="17">    colors[j<span class="op">+</span><span class="dv">1</span>] &lt;-<span class="st"> </span>skater_colors[i]</a>
-<a class="sourceLine" id="cb123-18" data-line-number="18">  }</a>
-<a class="sourceLine" id="cb123-19" data-line-number="19">}</a>
-<a class="sourceLine" id="cb123-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb123-21" data-line-number="21"><span class="co"># plot</span></a>
-<a class="sourceLine" id="cb123-22" data-line-number="22"><span class="kw">plot</span>(guerry_sp,  <span class="dt">col=</span>colors, <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb123-23" data-line-number="23"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;SKATER Clustering Map&quot;</span>)</a>
-<a class="sourceLine" id="cb123-24" data-line-number="24"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> skater_labels, <span class="dt">fill =</span> skater_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">Crm_prp &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Crm_prp))</a>
+<a class="sourceLine" id="cb125-2" data-line-number="2">Litercy &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Litercy))</a>
+<a class="sourceLine" id="cb125-3" data-line-number="3">Donatns &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Donatns))</a>
+<a class="sourceLine" id="cb125-4" data-line-number="4">Infants &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Infants))</a>
+<a class="sourceLine" id="cb125-5" data-line-number="5">Suicids &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Suicids))</a>
+<a class="sourceLine" id="cb125-6" data-line-number="6">data &lt;-<span class="st"> </span><span class="kw">list</span>(crm_prp, Crm_prp, Donatns, Infants, Suicids)</a>
+<a class="sourceLine" id="cb125-7" data-line-number="7">guerry_clusters &lt;-<span class="st"> </span><span class="kw">skater</span>(<span class="dv">4</span>, queen_w, data)</a>
+<a class="sourceLine" id="cb125-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb125-9" data-line-number="9"><span class="co"># Get some colors for each clusters</span></a>
+<a class="sourceLine" id="cb125-10" data-line-number="10">skater_colors &lt;-<span class="st"> </span><span class="kw">palette</span>()[<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb125-11" data-line-number="11">skater_labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;c3&quot;</span>,<span class="st">&quot;c4&quot;</span>)</a>
+<a class="sourceLine" id="cb125-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb125-13" data-line-number="13"><span class="co"># Assign a color for each observation</span></a>
+<a class="sourceLine" id="cb125-14" data-line-number="14">colors &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;#000000&quot;</span>, queen_w<span class="op">$</span>num_obs)</a>
+<a class="sourceLine" id="cb125-15" data-line-number="15"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</a>
+<a class="sourceLine" id="cb125-16" data-line-number="16">  <span class="cf">for</span> (j <span class="cf">in</span> guerry_clusters[i]) {</a>
+<a class="sourceLine" id="cb125-17" data-line-number="17">    colors[j<span class="op">+</span><span class="dv">1</span>] &lt;-<span class="st"> </span>skater_colors[i]</a>
+<a class="sourceLine" id="cb125-18" data-line-number="18">  }</a>
+<a class="sourceLine" id="cb125-19" data-line-number="19">}</a>
+<a class="sourceLine" id="cb125-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb125-21" data-line-number="21"><span class="co"># plot</span></a>
+<a class="sourceLine" id="cb125-22" data-line-number="22"><span class="kw">plot</span>(guerry_sp,  <span class="dt">col=</span>colors, <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
+<a class="sourceLine" id="cb125-23" data-line-number="23"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;SKATER Clustering Map&quot;</span>)</a>
+<a class="sourceLine" id="cb125-24" data-line-number="24"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> skater_labels, <span class="dt">fill =</span> skater_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
 <p><img src="rgeoda-book_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <div class="rmdnote">
 <p>
@@ -380,27 +381,27 @@ Why are we using <code>as.numeric(as.character(guerry_sp<span class="math inline
 </div>
 <div id="max-p-clustering-map" class="section level3">
 <h3><span class="header-section-number">7.3.5</span> Max-p Clustering Map</h3>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">bound_vals &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(guerry_sp<span class="op">$</span>Pop1831)</a>
-<a class="sourceLine" id="cb124-2" data-line-number="2">min_bound &lt;-<span class="st"> </span><span class="fl">3236.67</span> <span class="co"># 10% of Pop1831</span></a>
-<a class="sourceLine" id="cb124-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb124-4" data-line-number="4">maxp_clusters &lt;-<span class="st"> </span><span class="kw">maxp</span>(queen_w, data, bound_vals, min_bound, <span class="st">&quot;greedy&quot;</span>)</a>
-<a class="sourceLine" id="cb124-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb124-6" data-line-number="6"><span class="co"># Get some colors for each clusters</span></a>
-<a class="sourceLine" id="cb124-7" data-line-number="7">maxp_colors &lt;-<span class="st"> </span><span class="kw">palette</span>()[<span class="dv">2</span><span class="op">:</span><span class="dv">10</span>]</a>
-<a class="sourceLine" id="cb124-8" data-line-number="8">maxp_labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;c3&quot;</span>,<span class="st">&quot;c4&quot;</span>,<span class="st">&quot;c5&quot;</span>,<span class="st">&quot;c6&quot;</span>,<span class="st">&quot;c7&quot;</span>,<span class="st">&quot;c8&quot;</span>)</a>
-<a class="sourceLine" id="cb124-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb124-10" data-line-number="10"><span class="co"># Assign a color for each observation</span></a>
-<a class="sourceLine" id="cb124-11" data-line-number="11">colors &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;#000000&quot;</span>, queen_w<span class="op">$</span>num_obs)</a>
-<a class="sourceLine" id="cb124-12" data-line-number="12"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>) {</a>
-<a class="sourceLine" id="cb124-13" data-line-number="13">  <span class="cf">for</span> (j <span class="cf">in</span> maxp_clusters[i]) {</a>
-<a class="sourceLine" id="cb124-14" data-line-number="14">    colors[j<span class="op">+</span><span class="dv">1</span>] &lt;-<span class="st"> </span>maxp_colors[i]</a>
-<a class="sourceLine" id="cb124-15" data-line-number="15">  }</a>
-<a class="sourceLine" id="cb124-16" data-line-number="16">}</a>
-<a class="sourceLine" id="cb124-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb124-18" data-line-number="18"><span class="co"># plot</span></a>
-<a class="sourceLine" id="cb124-19" data-line-number="19"><span class="kw">plot</span>(guerry_sp,  <span class="dt">col=</span>colors, <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb124-20" data-line-number="20"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Max-p Clustering Map&quot;</span>)</a>
-<a class="sourceLine" id="cb124-21" data-line-number="21"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> maxp_labels, <span class="dt">fill =</span> maxp_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">bound_vals &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(guerry_sp<span class="op">$</span>Pop1831)</a>
+<a class="sourceLine" id="cb126-2" data-line-number="2">min_bound &lt;-<span class="st"> </span><span class="fl">3236.67</span> <span class="co"># 10% of Pop1831</span></a>
+<a class="sourceLine" id="cb126-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb126-4" data-line-number="4">maxp_clusters &lt;-<span class="st"> </span><span class="kw">maxp</span>(queen_w, data, bound_vals, min_bound, <span class="st">&quot;greedy&quot;</span>)</a>
+<a class="sourceLine" id="cb126-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb126-6" data-line-number="6"><span class="co"># Get some colors for each clusters</span></a>
+<a class="sourceLine" id="cb126-7" data-line-number="7">maxp_colors &lt;-<span class="st"> </span><span class="kw">palette</span>()[<span class="dv">2</span><span class="op">:</span><span class="dv">10</span>]</a>
+<a class="sourceLine" id="cb126-8" data-line-number="8">maxp_labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;c3&quot;</span>,<span class="st">&quot;c4&quot;</span>,<span class="st">&quot;c5&quot;</span>,<span class="st">&quot;c6&quot;</span>,<span class="st">&quot;c7&quot;</span>,<span class="st">&quot;c8&quot;</span>)</a>
+<a class="sourceLine" id="cb126-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb126-10" data-line-number="10"><span class="co"># Assign a color for each observation</span></a>
+<a class="sourceLine" id="cb126-11" data-line-number="11">colors &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;#000000&quot;</span>, queen_w<span class="op">$</span>num_obs)</a>
+<a class="sourceLine" id="cb126-12" data-line-number="12"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>) {</a>
+<a class="sourceLine" id="cb126-13" data-line-number="13">  <span class="cf">for</span> (j <span class="cf">in</span> maxp_clusters[i]) {</a>
+<a class="sourceLine" id="cb126-14" data-line-number="14">    colors[j<span class="op">+</span><span class="dv">1</span>] &lt;-<span class="st"> </span>maxp_colors[i]</a>
+<a class="sourceLine" id="cb126-15" data-line-number="15">  }</a>
+<a class="sourceLine" id="cb126-16" data-line-number="16">}</a>
+<a class="sourceLine" id="cb126-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb126-18" data-line-number="18"><span class="co"># plot</span></a>
+<a class="sourceLine" id="cb126-19" data-line-number="19"><span class="kw">plot</span>(guerry_sp,  <span class="dt">col=</span>colors, <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
+<a class="sourceLine" id="cb126-20" data-line-number="20"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Max-p Clustering Map&quot;</span>)</a>
+<a class="sourceLine" id="cb126-21" data-line-number="21"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> maxp_labels, <span class="dt">fill =</span> maxp_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
 <p><img src="rgeoda-book_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
 
 </div>

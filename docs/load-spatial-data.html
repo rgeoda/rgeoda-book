@@ -138,10 +138,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#open-resources"><i class="fa fa-check"></i><b>1.2</b> Open Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#mac"><i class="fa fa-check"></i><b>2.1</b> Mac</a></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.2</b> Windows</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#linux"><i class="fa fa-check"></i><b>2.3</b> Linux</a></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.4</b> Load rgeoda library in R</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#dependencies"><i class="fa fa-check"></i><b>2.1</b> Dependencies</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#mac"><i class="fa fa-check"></i><b>2.2</b> Mac</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.3</b> Windows</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#linux"><i class="fa fa-check"></i><b>2.4</b> Linux</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#load-rgeoda-library-in-r"><i class="fa fa-check"></i><b>2.5</b> Load rgeoda library in R</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="load-spatial-data.html"><a href="load-spatial-data.html"><i class="fa fa-check"></i><b>3</b> Load Spatial Data</a><ul>
 <li class="chapter" data-level="3.1" data-path="load-spatial-data.html"><a href="load-spatial-data.html#attributes-of-geoda-object"><i class="fa fa-check"></i><b>3.1</b> Attributes of <code>geoda</code> object</a></li>
@@ -230,8 +231,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Note: in this tutorial, we only tested loading ESRI shapefiles using rgeoda v0.0.3. Please create a ticket in rgeoda’s <a href="https://github.com/lixun910/rgeoda/issues">repository</a> if you experience any issues when loading spatial data.</p>
 <p>For example, to load the ESRI Shapefile <code>Guerry.shp</code> (source: <a href="https://geodacenter.github.io/data-and-lab/Guerry/" class="uri">https://geodacenter.github.io/data-and-lab/Guerry/</a>) comes with the package:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">guerry_path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;Guerry.shp&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rgeoda&quot;</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">guerry &lt;-<span class="st"> </span><span class="kw">geoda_open</span>(guerry_path)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">guerry_path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;Guerry.shp&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rgeoda&quot;</span>)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">guerry &lt;-<span class="st"> </span><span class="kw">geoda_open</span>(guerry_path)</a></code></pre></div>
 <p>The <code>geoda_open</code> function returns a geoda object, which can be used to access the meta-data, fields, and columns of the input dataset.</p>
 <pre><code>Usage
 geoda_open(ds_path)
@@ -251,23 +252,23 @@ gda_obj An object of geoda class</code></pre>
 <li>table (data.frame)</li>
 </ul>
 <p>To access the meta-data of the loaded Guerry dataset:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">number of columns:&quot;</span>, guerry<span class="op">$</span>n_cols)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">number of columns:&quot;</span>, guerry<span class="op">$</span>n_cols)</a></code></pre></div>
 <pre><code>## 
 ## number of columns: 26</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">number of observations:&quot;</span>, guerry<span class="op">$</span>n_obs)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">number of observations:&quot;</span>, guerry<span class="op">$</span>n_obs)</a></code></pre></div>
 <pre><code>## 
 ## number of observations: 85</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">field names:&quot;</span>, guerry<span class="op">$</span>field_names)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">field names:&quot;</span>, guerry<span class="op">$</span>field_names)</a></code></pre></div>
 <pre><code>## 
 ## field names: CODE_DE COUNT AVE_ID_ dept Region Dprtmnt Crm_prs Crm_prp Litercy Donatns Infants Suicids MainCty Wealth Commerc Clergy Crm_prn Infntcd Dntn_cl Lottery Desertn Instrct Prsttts Distanc Area Pop1831</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">field types:&quot;</span>, guerry<span class="op">$</span>field_types)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">field types:&quot;</span>, guerry<span class="op">$</span>field_types)</a></code></pre></div>
 <pre><code>## 
 ## field types: string numeric numeric integer string string integer integer integer integer integer integer integer integer integer integer integer integer integer integer integer integer integer numeric integer numeric</code></pre>
 </div>
 <div id="access-table-data" class="section level2">
 <h2><span class="header-section-number">3.2</span> Access Table Data</h2>
 <p>The geoda instance has a R data.frame attribute <code>table</code>, which stores the data loaded from the dataset:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">guerry<span class="op">$</span>table</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">guerry<span class="op">$</span>table</a></code></pre></div>
 <pre><code>##       CODE_DE COUNT AVE_ID_ dept Region             Dprtmnt Crm_prs
 ## NA         01     1      49    1      E                 Ain   28870
 ## NA.1       02     1     812    2      N               Aisne   26226
@@ -613,8 +614,8 @@ gda_obj An object of geoda class</code></pre>
 ## NA.83 174.477  5874  397.99
 ## NA.84  81.797  7427  352.49</code></pre>
 <p>With the <code>table</code> attribute, we can, for example, get the values of “Crm_prp” column:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">crm_prp &lt;-<span class="st"> </span>guerry<span class="op">$</span>table<span class="op">$</span>Crm_prp</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">firs 10 values of Crm_prp:&quot;</span>, crm_prp[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">crm_prp &lt;-<span class="st"> </span>guerry<span class="op">$</span>table<span class="op">$</span>Crm_prp</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">firs 10 values of Crm_prp:&quot;</span>, crm_prp[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>])</a></code></pre></div>
 <pre><code>## 
 ## firs 10 values of Crm_prp: 15890 5521 7925 7289 8174 10263 8847 9597 4086 10431</code></pre>
 
