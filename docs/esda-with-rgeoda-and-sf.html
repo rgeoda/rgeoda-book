@@ -24,7 +24,7 @@
 <meta name="author" content="Xun Li" />
 
 
-<meta name="date" content="2019-10-10" />
+<meta name="date" content="2019-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -133,7 +133,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">rgeoda v0.0.3</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#live-tutorials"><i class="fa fa-check"></i><b>1.1</b> Live Tutorials</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#open-resources"><i class="fa fa-check"></i><b>1.2</b> Open Resources</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#mac"><i class="fa fa-check"></i><b>2.1</b> Mac</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>2.2</b> Windows</a></li>
@@ -242,7 +245,7 @@ Note: to install sf library in R, you can run: <code>install.packages(‘sf’)<
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="kw">plot</span>(guerry_sf)</a></code></pre></div>
 <pre><code>## Warning: plotting the first 9 out of 26 attributes; use max.plot = 26 to
 ## plot all</code></pre>
-<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 </div>
 <div id="create-geoda-object-from-sf" class="section level2">
 <h2><span class="header-section-number">8.2</span> Create geoda object from sf</h2>
@@ -278,7 +281,7 @@ By default, sf_to_geoda() only using geometries to create a geoda object, which 
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f8001f131b0&gt;
+## &lt;pointer: 0x7fee535ded90&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] TRUE
@@ -318,7 +321,7 @@ By default, sf_to_geoda() only using geometries to create a geoda object, which 
 <a class="sourceLine" id="cb137-7" data-line-number="7">     <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
 <a class="sourceLine" id="cb137-8" data-line-number="8"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Local Moran Map of Crm_prp&quot;</span>)</a>
 <a class="sourceLine" id="cb137-9" data-line-number="9"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> lisa_labels, <span class="dt">fill =</span> lisa_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
-<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
 <p>From the above code, you can see that we still use <code>sp</code> object to do plotting. The values of cluster indicators from rgeoda’s <code>LISA</code> object are used to make the LISA map.This emphasis that rgeoda is a API focused library, which only provides the core functions of spatial data analysis for easy integration.</p>
 <p>You can easily append the lisa results to original sp object by manipulating the data.frame object inside the sp object.</p>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">guerry_sf<span class="op">$</span>moran_cluster &lt;-<span class="st"> </span>lisa_clusters</a></code></pre></div>
@@ -341,7 +344,7 @@ By default, sf_to_geoda() only using geometries to create a geoda object, which 
 <a class="sourceLine" id="cb141-11" data-line-number="11">     <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
 <a class="sourceLine" id="cb141-12" data-line-number="12"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Local Moran Map of Crm_prp&quot;</span>)</a>
 <a class="sourceLine" id="cb141-13" data-line-number="13"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> p_labels, <span class="dt">fill =</span> p_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
-<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
 </div>
 <div id="local-geary-map-1" class="section level3">
 <h3><span class="header-section-number">8.3.2</span> Local Geary Map</h3>
@@ -356,7 +359,7 @@ By default, sf_to_geoda() only using geometries to create a geoda object, which 
 <a class="sourceLine" id="cb142-8" data-line-number="8">     <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
 <a class="sourceLine" id="cb142-9" data-line-number="9"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Local Geary Map of Crm_prp&quot;</span>)</a>
 <a class="sourceLine" id="cb142-10" data-line-number="10"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> lisa_labels, <span class="dt">fill =</span> lisa_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
-<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
 </div>
 <div id="local-g-map-1" class="section level3">
 <h3><span class="header-section-number">8.3.3</span> Local G Map</h3>
@@ -371,7 +374,7 @@ By default, sf_to_geoda() only using geometries to create a geoda object, which 
 <a class="sourceLine" id="cb143-8" data-line-number="8">     <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
 <a class="sourceLine" id="cb143-9" data-line-number="9"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Local Getis-Ord&#39;s G Map of Crm_prp&quot;</span>)</a>
 <a class="sourceLine" id="cb143-10" data-line-number="10"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> lisa_labels, <span class="dt">fill =</span> lisa_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
-<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
 </div>
 <div id="skater-map-1" class="section level3">
 <h3><span class="header-section-number">8.3.4</span> SKATER Map</h3>
@@ -400,7 +403,7 @@ By default, sf_to_geoda() only using geometries to create a geoda object, which 
 <a class="sourceLine" id="cb144-22" data-line-number="22"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(guerry_sf),  <span class="dt">col=</span>colors, <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
 <a class="sourceLine" id="cb144-23" data-line-number="23"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;SKATER Clustering Map&quot;</span>)</a>
 <a class="sourceLine" id="cb144-24" data-line-number="24"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> skater_labels, <span class="dt">fill =</span> skater_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
-<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
+<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
 </div>
 <div id="max-p-clustering-map-1" class="section level3">
 <h3><span class="header-section-number">8.3.5</span> Max-p Clustering Map</h3>
@@ -425,7 +428,7 @@ By default, sf_to_geoda() only using geometries to create a geoda object, which 
 <a class="sourceLine" id="cb145-19" data-line-number="19"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(guerry_sf),  <span class="dt">col=</span>colors, <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
 <a class="sourceLine" id="cb145-20" data-line-number="20"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Max-p Clustering Map&quot;</span>)</a>
 <a class="sourceLine" id="cb145-21" data-line-number="21"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> maxp_labels, <span class="dt">fill =</span> maxp_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
-<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+<p><img src="rgeoda-book_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
 
 </div>
 </div>
