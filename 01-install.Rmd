@@ -7,7 +7,7 @@ Like GeoDa desktop software, rgeoda are avaiable to different platforms includin
 rgeoda depends on `wkb` package. Sometimes, the "dependencies=TRUE" argument of `install.package()` doesn't guarantee the installation ow `wkb` automatically. To avoid any potential issues of installation, you can install it first before rgeoda installation:
 
 ```r
-install.packages(wkb)
+install.packages('wkb')
 ```
 
 ## Mac
@@ -19,7 +19,7 @@ xcode-select --install
 
 In R console, use install.packages() function to install rgeoda from its **source pacakge**: 
 ```r
-install.packages("https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.tar.gz", dependencies=c('wkb'))
+install.packages("https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.tar.gz")
 # or the development version
 # devtools::install_github("lixun910/rgeoda")
 ```
@@ -29,7 +29,7 @@ install.packages("https://github.com/lixun910/rgeoda/releases/download/0.0.3/rge
 In R console, one can use install.packages() function to install rgeoda from its **binary pacakge**: 
 
 ```{r eval=FALSE}
-install.packages("https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.zip", dependencies=c('wkb'))
+install.packages("https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.zip")
 ```
 
 ```{block, type='rmdwarn'}
@@ -47,7 +47,7 @@ sudo apt-get install build-essential
 Then, in R console, use install.packages() function to install rgeoda from its **source pacakge**: 
 
 ```r
-install.packages("https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.tar.gz", dependencies=c('wkb'))
+install.packages("https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.tar.gz")
 # or the development version
 # devtools::install_github("lixun910/rgeoda")
 ```

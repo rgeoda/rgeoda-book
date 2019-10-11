@@ -219,21 +219,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="dependencies" class="section level2">
 <h2><span class="header-section-number">2.1</span> Dependencies</h2>
 <p>rgeoda depends on <code>wkb</code> package. Sometimes, the “dependencies=TRUE” argument of <code>install.package()</code> doesn’t guarantee the installation ow <code>wkb</code> automatically. To avoid any potential issues of installation, you can install it first before rgeoda installation:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(wkb)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&#39;wkb&#39;</span>)</a></code></pre></div>
 </div>
 <div id="mac" class="section level2">
 <h2><span class="header-section-number">2.2</span> Mac</h2>
 <p>For Mac users, the “Xcode Command Line Tools” needs to be installed for installing rgeoda. It is a free software provided by Apple, which can be installed by using the following command in a terminal:</p>
 <pre><code>xcode-select --install </code></pre>
 <p>In R console, use install.packages() function to install rgeoda from its <strong>source pacakge</strong>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.tar.gz&quot;</span>, <span class="dt">dependencies=</span><span class="kw">c</span>(<span class="st">&#39;wkb&#39;</span>))</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.tar.gz&quot;</span>)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># or the development version</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co"># devtools::install_github(&quot;lixun910/rgeoda&quot;)</span></a></code></pre></div>
 </div>
 <div id="windows" class="section level2">
 <h2><span class="header-section-number">2.3</span> Windows</h2>
 <p>In R console, one can use install.packages() function to install rgeoda from its <strong>binary pacakge</strong>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.zip&quot;</span>, <span class="dt">dependencies=</span><span class="kw">c</span>(<span class="st">&#39;wkb&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.zip&quot;</span>)</a></code></pre></div>
 <div class="rmdwarn">
 <p>
 Install rgeoda on windows from source package is not recommended. You would try if you know how to deal with <a href="https://www.r-project.org/nosvn/pandoc/devtools.html">R devtools</a> on windows.
@@ -246,7 +246,7 @@ Install rgeoda on windows from source package is not recommended. You would try 
 <pre><code>sudo apt-get update
 sudo apt-get install build-essential</code></pre>
 <p>Then, in R console, use install.packages() function to install rgeoda from its <strong>source pacakge</strong>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.tar.gz&quot;</span>, <span class="dt">dependencies=</span><span class="kw">c</span>(<span class="st">&#39;wkb&#39;</span>))</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;https://github.com/lixun910/rgeoda/releases/download/0.0.3/rgeoda_0.0.3.tar.gz&quot;</span>)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co"># or the development version</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co"># devtools::install_github(&quot;lixun910/rgeoda&quot;)</span></a></code></pre></div>
 </div>
