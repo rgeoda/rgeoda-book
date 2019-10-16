@@ -5,11 +5,11 @@ Spatial weights are central components in spatial data analysis. The spatial wei
 * Contiguity Based Weights: `queen_weights()`, `rook_weights()`
 * Distance Based Weights: `distance_weights()`
 * K-Nearest Neighbor Weights: `knn_weights()`
-* Kernel Weights: `distance_weights()` and `knn_weights()` with kernel parameters
+* Kernel Weights: `kernel_weights()` 
 
 ## Queen Contiguity Weights
 
-To create a Queen contiguity weights, we can call pygeoda's function 
+To create a Queen contiguity weights, we can call rgeoda's function 
 ```r
 queen_weights(gda, order=1, include_lower_order = False, precision_threshold = 0)
 ``` 
@@ -22,7 +22,7 @@ queen_w
 
 The function `queen_weights()` returns an instance of 
 `Weight` object. One can access the meta data of the spatial
-weights by accessing the attributes of `GeoDaWeight` object:
+weights by accessing the attributes of `Weight` object:
 
 ## Attributes of `Weight` object
 
@@ -39,7 +39,7 @@ weights by accessing the attributes of `GeoDaWeight` object:
 * double SpatialLag(idx, [data])
 * SaveToFile()
 
-We can also access the details of the weights: e.g. list the neighbors of a specified observation, which is very helpful in exploratory spatial data analysis (which is focused in next tutorial):
+We can also access the details of the weights: e.g. list the neighbors of a specified observation, which is very helpful in exploratory spatial data analysis:
 
 ```{r}
 nbrs <- queen_w$GetNeighbors(0)
@@ -54,18 +54,18 @@ cat("\nSpatial lag of 0-st observation is:", lag0)
 
 ## Rook Contiguity Weights
 
-To create a Rook contiguity weights, we can call pygeoda's function 
+To create a Rook contiguity weights, we can call rgeoda's function 
 ```r
 rook_weights(gda, order=1,include_lower_order=False, precision_threshold = 0)
 ``` 
-by passing the GeoDa object `guerry` we just created: 
+by passing the geoda object `guerry` we just created: 
 
 ```{r}
 rook_w <- rook_weights(guerry)
 rook_w
 ```
 
-The weights we created are in memory, which makes it straight forward for spatial data analysis and also are good for programming your application. To save the weights to a file, we need to call GeoDaWeight's function 
+The weights we created are in memory, which makes it straight forward for spatial data analysis and also are good for programming your application. To save the weights to a file, we need to call aWeight's function 
 ```r
 SaveToFile(ofname, layer_name, id_name, id_vec)
 ```
@@ -103,7 +103,7 @@ dist_w
 ```
 ## K-Nearest Neighbor Weights
 
-A special case of distance based weights is K-Nearest neighbor weights, in which every obersvation will have exactly k neighbors. To create a KNN weights, we can call pygeoda's function:
+A special case of distance based weights is K-Nearest neighbor weights, in which every obersvation will have exactly k neighbors. To create a KNN weights, we can call rgeoda's function:
 ```r
 gda_knn_weights(gda, k, power = 1.0,is_inverse = False, is_arc = False, is_mile = True)
 ```
