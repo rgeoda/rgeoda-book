@@ -35,9 +35,9 @@ You can try these R jupyter notebooks in your browser via MyBinder (no installat
 * The rgeoda is open-sourced at: https://github.com/lixun910/rgeoda.
 * The libgeoda is open-sourced at: https://github.com/lixun910/libgeoda.
 
-If you are interested in python programming, you can try a performance-oriented library `pygeoda` for spatial data analysis:
+If you are interested in python programming, you can try a performance-oriented library `rgeoda` for spatial data analysis:
 
-* The pygeoda is open-sourced at: https://github.com/lixun910/pygeoda.
+* The rgeoda is open-sourced at: https://github.com/lixun910/rgeoda.
 
 If you have any questions or issues, please open a ticket in one of above repositories.
 

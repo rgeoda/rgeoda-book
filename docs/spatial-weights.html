@@ -24,7 +24,7 @@
 <meta name="author" content="Xun Li" />
 
 
-<meta name="date" content="2019-10-11" />
+<meta name="date" content="2019-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -220,11 +220,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Contiguity Based Weights: <code>queen_weights()</code>, <code>rook_weights()</code></li>
 <li>Distance Based Weights: <code>distance_weights()</code></li>
 <li>K-Nearest Neighbor Weights: <code>knn_weights()</code></li>
-<li>Kernel Weights: <code>distance_weights()</code> and <code>knn_weights()</code> with kernel parameters</li>
+<li>Kernel Weights: <code>kernel_weights()</code></li>
 </ul>
 <div id="queen-contiguity-weights" class="section level2">
 <h2><span class="header-section-number">4.1</span> Queen Contiguity Weights</h2>
-<p>To create a Queen contiguity weights, we can call pygeoda’s function</p>
+<p>To create a Queen contiguity weights, we can call rgeoda’s function</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">queen_weights</span>(gda, <span class="dt">order=</span><span class="dv">1</span>, <span class="dt">include_lower_order =</span> False, <span class="dt">precision_threshold =</span> <span class="dv">0</span>)</a></code></pre></div>
 <p>by passing the GeoDa object <code>guerry</code> we just created:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">queen_w &lt;-<span class="st"> </span><span class="kw">queen_weights</span>(guerry)</a>
@@ -233,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f9d9fe70af0&gt;
+## &lt;pointer: 0x7f8b60c53ca0&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] TRUE
@@ -253,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] 5</code></pre>
 <p>The function <code>queen_weights()</code> returns an instance of
 <code>Weight</code> object. One can access the meta data of the spatial
-weights by accessing the attributes of <code>GeoDaWeight</code> object:</p>
+weights by accessing the attributes of <code>Weight</code> object:</p>
 </div>
 <div id="attributes-of-weight-object" class="section level2">
 <h2><span class="header-section-number">4.2</span> Attributes of <code>Weight</code> object</h2>
@@ -271,7 +271,7 @@ weights by accessing the attributes of <code>GeoDaWeight</code> object:</p>
 <li>double SpatialLag(idx, [data])</li>
 <li>SaveToFile()</li>
 </ul>
-<p>We can also access the details of the weights: e.g. list the neighbors of a specified observation, which is very helpful in exploratory spatial data analysis (which is focused in next tutorial):</p>
+<p>We can also access the details of the weights: e.g. list the neighbors of a specified observation, which is very helpful in exploratory spatial data analysis:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">nbrs &lt;-<span class="st"> </span>queen_w<span class="op">$</span><span class="kw">GetNeighbors</span>(<span class="dv">0</span>)</a>
 <a class="sourceLine" id="cb25-2" data-line-number="2"><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Neighbors of 0-st observation are:&quot;</span>, nbrs)</a></code></pre></div>
 <pre><code>## 
@@ -284,16 +284,16 @@ weights by accessing the attributes of <code>GeoDaWeight</code> object:</p>
 </div>
 <div id="rook-contiguity-weights" class="section level2">
 <h2><span class="header-section-number">4.3</span> Rook Contiguity Weights</h2>
-<p>To create a Rook contiguity weights, we can call pygeoda’s function</p>
+<p>To create a Rook contiguity weights, we can call rgeoda’s function</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">rook_weights</span>(gda, <span class="dt">order=</span><span class="dv">1</span>,<span class="dt">include_lower_order=</span>False, <span class="dt">precision_threshold =</span> <span class="dv">0</span>)</a></code></pre></div>
-<p>by passing the GeoDa object <code>guerry</code> we just created:</p>
+<p>by passing the geoda object <code>guerry</code> we just created:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">rook_w &lt;-<span class="st"> </span><span class="kw">rook_weights</span>(guerry)</a>
 <a class="sourceLine" id="cb30-2" data-line-number="2">rook_w</a></code></pre></div>
 <pre><code>## Reference class object of class &quot;Weight&quot;
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f9d9fcf3750&gt;
+## &lt;pointer: 0x7f8b69e8a510&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] TRUE
@@ -311,7 +311,7 @@ weights by accessing the attributes of <code>GeoDaWeight</code> object:</p>
 ## [1] 4.941176
 ## Field &quot;median_neighbors&quot;:
 ## [1] 5</code></pre>
-<p>The weights we created are in memory, which makes it straight forward for spatial data analysis and also are good for programming your application. To save the weights to a file, we need to call GeoDaWeight’s function</p>
+<p>The weights we created are in memory, which makes it straight forward for spatial data analysis and also are good for programming your application. To save the weights to a file, we need to call aWeight’s function</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">SaveToFile</span>(ofname, layer_name, id_name, id_vec)</a></code></pre></div>
 <p>The <code>layer_name</code> is the layer name of loaded dataset. For a ESRI shapefile, the layer name is the file name without the suffix (e.g. Guerry).</p>
 <p>The <code>id_name</code> is a key (column name), which means the associated column contains unique values, that makes sure that the weights are connected to the correct observations in the data table.</p>
@@ -334,7 +334,7 @@ weights by accessing the attributes of <code>GeoDaWeight</code> object:</p>
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f9daa164770&gt;
+## &lt;pointer: 0x7f8b69e66330&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] FALSE
@@ -355,7 +355,7 @@ weights by accessing the attributes of <code>GeoDaWeight</code> object:</p>
 </div>
 <div id="k-nearest-neighbor-weights" class="section level2">
 <h2><span class="header-section-number">4.5</span> K-Nearest Neighbor Weights</h2>
-<p>A special case of distance based weights is K-Nearest neighbor weights, in which every obersvation will have exactly k neighbors. To create a KNN weights, we can call pygeoda’s function:</p>
+<p>A special case of distance based weights is K-Nearest neighbor weights, in which every obersvation will have exactly k neighbors. To create a KNN weights, we can call rgeoda’s function:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">gda_knn_weights</span>(gda, k, <span class="dt">power =</span> <span class="fl">1.0</span>,<span class="dt">is_inverse =</span> False, <span class="dt">is_arc =</span> False, <span class="dt">is_mile =</span> True)</a></code></pre></div>
 <p>For example, to create a 6-nearest neighbor weights using Guerry dataset:</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">knn6_w &lt;-<span class="st"> </span><span class="kw">knn_weights</span>(guerry, <span class="dv">6</span>)</a>
@@ -364,7 +364,7 @@ weights by accessing the attributes of <code>GeoDaWeight</code> object:</p>
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f9da4476e90&gt;
+## &lt;pointer: 0x7f8b69e52420&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] FALSE
@@ -406,7 +406,7 @@ weights by accessing the attributes of <code>GeoDaWeight</code> object:</p>
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f9d9fc89970&gt;
+## &lt;pointer: 0x7f8b60d2bb60&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] FALSE
@@ -438,7 +438,7 @@ weights by accessing the attributes of <code>GeoDaWeight</code> object:</p>
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f9d9fce3e60&gt;
+## &lt;pointer: 0x7f8b60d28460&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] FALSE

@@ -11,7 +11,7 @@ rgeoda 0.0.3 provids following methods for univariate local spatial autocorrelat
 
 Methods for bivariate and multivariate local spatial autocorrelation statistics, as well as global spatial autocorrelation satatistics, will be included in next release of rgeoda.
 
-In this tutorial, we will only introduce how to call these methods using pygeoda. For more information about the local spatial autocorrelation statisticis, please read the lab note that Dr. Luc Anselin wrote: http://geodacenter.github.io/workbook/6a_local_auto/lab6a.html. 
+In this tutorial, we will only introduce how to call these methods using rgeoda. For more information about the local spatial autocorrelation statisticis, please read the lab note that Dr. Luc Anselin wrote: http://geodacenter.github.io/workbook/6a_local_auto/lab6a.html. 
 
 ## Local Moran
 
