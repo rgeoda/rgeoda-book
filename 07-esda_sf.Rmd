@@ -64,7 +64,7 @@ guerry <- sf_to_geoda(guerry_sf)
 
 ## ESDA with rgeoda and sf
 
-Now, with the geoda object `guerry`, you can call rgeoda’s spatial analysis functions. For example, to examine the local Moran statistics of variable “crm_prs” (Population per Crime against persons):
+Now, with the geoda object `guerry`, you can call rgeoda’s spatial analysis functions. For example, to examine the local Moran statistics of variable “crm_prp” (Population per Crime against persons):
 
 ```{r}
 queen_w <- queen_weights(guerry)
@@ -162,12 +162,12 @@ legend('bottomleft', legend = lisa_labels, fill = lisa_colors, border = "#eeeeee
 To create a map of SKATER clustering map:
 
 ```{r}
-Crm_prp <- as.numeric(guerry_sf$Crm_prp)
+Crm_prs <- as.numeric(guerry_sf$Crm_prs)
 Litercy <- as.numeric(guerry_sf$Litercy)
 Donatns <- as.numeric(guerry_sf$Donatns)
 Infants <- as.numeric(guerry_sf$Infants)
 Suicids <- as.numeric(guerry_sf$Suicids)
-data <- list(crm_prp, Crm_prp, Donatns, Infants, Suicids)
+data <- list(Crm_prs, crm_prp, Litercy, Donatns, Infants, Suicids)
 guerry_clusters <- skater(4, queen_w, data)
 
 # Get some colors for each clusters

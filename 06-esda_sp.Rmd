@@ -57,7 +57,7 @@ By default, sp_to_geoda() only using geometries to create a geoda object, which 
 
 ## ESDA with rgeoda and sp
 
-Now, with the geoda object `guerry`, you can call rgeoda’s spatial analysis functions. For example, to examine the local Moran statistics of variable “crm_prs” (Population per Crime against persons):
+Now, with the geoda object `guerry`, you can call rgeoda’s spatial analysis functions. For example, to examine the local Moran statistics of variable “crm_prp” (Population per Crime against persons):
 
 ```{r}
 queen_w <- queen_weights(guerry)
@@ -162,12 +162,12 @@ legend('bottomleft', legend = lisa_labels, fill = lisa_colors, border = "#eeeeee
 To create a map of SKATER clustering map:
 
 ```{r}
-Crm_prp <- as.numeric(as.character(guerry_sp$Crm_prp))
+Crm_prs <- as.numeric(as.character(guerry_sp$Crm_prs))
 Litercy <- as.numeric(as.character(guerry_sp$Litercy))
 Donatns <- as.numeric(as.character(guerry_sp$Donatns))
 Infants <- as.numeric(as.character(guerry_sp$Infants))
 Suicids <- as.numeric(as.character(guerry_sp$Suicids))
-data <- list(crm_prp, Crm_prp, Donatns, Infants, Suicids)
+data <- list(Crm_prs, crm_prp, Litercy, Donatns, Infants, Suicids)
 guerry_clusters <- skater(4, queen_w, data)
 
 # Get some colors for each clusters
@@ -189,11 +189,15 @@ legend('bottomleft', legend = skater_labels, fill = skater_colors, border = "#ee
 ```
 
 
-```{block, type='rmdnote'}
-Why are we using `as.numeric(as.character(guerry_sp$Crm_prp))`?
-
-As we can see from the output of `readOGR(guerry_path)` that: _"Integer64 fields read as strings:  dept Crm_prs Crm_prp Litercy Donatns Infants Suicids MainCty_", so `guerry_sp$Crm_prp` is with data type `factor`, so `as.numeric(as.character())` is used to convert it to a column with numeric values without lossing precisions.
+```{block, type='rmdquestion'}
+Why are we using `as.numeric(as.character(guerry_sp$Crm_prp))` here to get values from data.frame?
 ```
+
+As we can see from the output of `readOGR(guerry_path)` that: 
+```
+_"Integer64 fields read as strings:  dept Crm_prs Crm_prp Litercy Donatns Infants Suicids MainCty_"
+```
+, that means `guerry_sp$Crm_prp` is with data type `factor`, so `as.numeric(as.character())` is used to convert it to a column with numeric values without lossing precisions.
 
 
 ### Max-p Clustering Map

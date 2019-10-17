@@ -137,18 +137,18 @@ Local Geary is a type of LISA that focuses on squared differences/dissimilarity.
 For example, we can call the function `local_geary()` with the created Queen weights and the data “crm_prp” as input parameters:
 
 ```{r}
-geary_crmprs <- local_geary(queen_w, crm_prp)
+geary_crmprp <- local_geary(queen_w, crm_prp)
 ```
 
 To get the cluster indicators of the local Geary computation:
 ```{r}
-geary_crmprs$GetClusterIndicators()
+geary_crmprp$GetClusterIndicators()
 ```
 
 To get the pseudo-p values of the local Geary computation:
 
 ```{r}
-geary_crmprs$GetPValues()
+geary_crmprp$GetPValues()
 ```
 
 ## Local Getis-Ord Statistics
@@ -160,23 +160,23 @@ A value larger than the mean suggests a high-high cluster or hot spot, a value s
 For example, we can call the function `local_g()` with the created Queen weights and the data “crm_prp” as input parameters:
 
 ```{r}
-localg_crmprs <- local_g(queen_w, crm_prp)
+localg_crmprp <- local_g(queen_w, crm_prp)
 ```
 
 To get the cluster indicators of the local G computation:
 
 ```{r}
-localg_crmprs$GetClusterIndicators()
+localg_crmprp$GetClusterIndicators()
 ```
 
 To get the pseudo-p values of the local G computation:
 ```{r}
-localg_crmprs$GetPValues()
+localg_crmprp$GetPValues()
 ```
 
 For the second type of local Getis-Ord statistics, we can call the function `local_gstar()` with the created Queen weights and the data “crm_prp” as input parameters:
 ```{r}
-localgstar_crmprs <- local_gstar(queen_w, crm_prp)
+localgstar_crmprp <- local_gstar(queen_w, crm_prp)
 ```
 
 ## Local Join Count
@@ -191,20 +191,20 @@ columbus_path <- system.file("extdata", "columbus.shp", package = "rgeoda")
 columbus <- geoda_open(columbus_path)
 
 columbus_w <- queen_weights(columbus)
-localjc_crmprs <- local_joincount(columbus_w, columbus$table$nsa)
+localjc_crmprp <- local_joincount(columbus_w, columbus$table$nsa)
 ```
 To get the cluster indicators of the local Join Count computation:
 
 ```{r}
-localjc_crmprs$GetClusterIndicators()
+localjc_crmprp$GetClusterIndicators()
 ```
 
 To get the pseudo-p values of the local Join Count  computation:
 ```{r}
-localjc_crmprs$GetPValues()
+localjc_crmprp$GetPValues()
 ```
 
 To get the number of neighbors of the local Join Count computation:
 ```{r}
-localjc_crmprs$GetNumNeighbors()
+localjc_crmprp$GetNumNeighbors()
 ```

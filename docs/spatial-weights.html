@@ -24,7 +24,7 @@
 <meta name="author" content="Xun Li" />
 
 
-<meta name="date" content="2019-10-16" />
+<meta name="date" content="2019-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -233,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f8b60c53ca0&gt;
+## &lt;pointer: 0x7f992c30fc10&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] TRUE
@@ -293,7 +293,7 @@ weights by accessing the attributes of <code>Weight</code> object:</p>
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f8b69e8a510&gt;
+## &lt;pointer: 0x7f992c0a4720&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] TRUE
@@ -324,9 +324,9 @@ weights by accessing the attributes of <code>Weight</code> object:</p>
 <div id="distance-based-weights" class="section level2">
 <h2><span class="header-section-number">4.4</span> Distance Based Weights</h2>
 <p>To create a Distance based weights, we can call rgeoda’s function</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">gda_distance_weights</span>(gda, dist_thres, <span class="dt">power=</span><span class="fl">1.0</span>,  <span class="dt">is_inverse=</span>False, <span class="dt">is_arc=</span>False, <span class="dt">is_mile=</span>True)</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">distance_weights</span>(gda, dist_thres, <span class="dt">power=</span><span class="fl">1.0</span>,  <span class="dt">is_inverse=</span>False, <span class="dt">is_arc=</span>False, <span class="dt">is_mile=</span>True)</a></code></pre></div>
 <p>by passing the GeoDa object <code>guerry</code> we just created and the value of distance threshold. Like GeoDa, rgeoda provides a function to help you find a optimized distance threshold that guarantees that every observation has at least one neighbor:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">gda_min_distthreshold</span>(GeoDa gda, bool <span class="dt">is_arc =</span> False, bool <span class="dt">is_mile =</span> True)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">min_distthreshold</span>(GeoDa gda, bool <span class="dt">is_arc =</span> False, bool <span class="dt">is_mile =</span> True)</a></code></pre></div>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">dist_thres &lt;-<span class="st"> </span><span class="kw">min_distthreshold</span>(guerry)</a>
 <a class="sourceLine" id="cb37-2" data-line-number="2">dist_w &lt;-<span class="st"> </span><span class="kw">distance_weights</span>(guerry, dist_thres)</a>
 <a class="sourceLine" id="cb37-3" data-line-number="3">dist_w</a></code></pre></div>
@@ -334,7 +334,7 @@ weights by accessing the attributes of <code>Weight</code> object:</p>
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f8b69e66330&gt;
+## &lt;pointer: 0x7f99286b2950&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] FALSE
@@ -356,7 +356,7 @@ weights by accessing the attributes of <code>Weight</code> object:</p>
 <div id="k-nearest-neighbor-weights" class="section level2">
 <h2><span class="header-section-number">4.5</span> K-Nearest Neighbor Weights</h2>
 <p>A special case of distance based weights is K-Nearest neighbor weights, in which every obersvation will have exactly k neighbors. To create a KNN weights, we can call rgeoda’s function:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">gda_knn_weights</span>(gda, k, <span class="dt">power =</span> <span class="fl">1.0</span>,<span class="dt">is_inverse =</span> False, <span class="dt">is_arc =</span> False, <span class="dt">is_mile =</span> True)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">knn_weights</span>(gda, k, <span class="dt">power =</span> <span class="fl">1.0</span>,<span class="dt">is_inverse =</span> False, <span class="dt">is_arc =</span> False, <span class="dt">is_mile =</span> True)</a></code></pre></div>
 <p>For example, to create a 6-nearest neighbor weights using Guerry dataset:</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">knn6_w &lt;-<span class="st"> </span><span class="kw">knn_weights</span>(guerry, <span class="dv">6</span>)</a>
 <a class="sourceLine" id="cb40-2" data-line-number="2">knn6_w</a></code></pre></div>
@@ -364,7 +364,7 @@ weights by accessing the attributes of <code>Weight</code> object:</p>
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f8b69e52420&gt;
+## &lt;pointer: 0x7f99286016b0&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] FALSE
@@ -406,7 +406,7 @@ weights by accessing the attributes of <code>Weight</code> object:</p>
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f8b60d2bb60&gt;
+## &lt;pointer: 0x7f992c3d9270&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] FALSE
@@ -431,14 +431,14 @@ weights by accessing the attributes of <code>Weight</code> object:</p>
 <div id="kernel-weights-with-adaptive-bandwidth" class="section level3">
 <h3><span class="header-section-number">4.6.2</span> Kernel Weights with adaptive bandwidth</h3>
 <p>To create a kernel weights with adaptive bandwidth or using max KNN distance as bandwidth:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">adptkernel_w =<span class="st"> </span><span class="kw">kernel_knn_weights</span>(guerry, <span class="dv">6</span>, <span class="st">&quot;uniform&quot;</span>)</a>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">adptkernel_w &lt;-<span class="st"> </span><span class="kw">kernel_knn_weights</span>(guerry, <span class="dv">6</span>, <span class="st">&quot;uniform&quot;</span>)</a>
 <a class="sourceLine" id="cb45-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb45-3" data-line-number="3">adptkernel_w</a></code></pre></div>
 <pre><code>## Reference class object of class &quot;Weight&quot;
 ## Field &quot;gda_w&quot;:
 ## An object of class &quot;_p_GeoDaWeight&quot;
 ## Slot &quot;ref&quot;:
-## &lt;pointer: 0x7f8b60d28460&gt;
+## &lt;pointer: 0x7f992c38cc30&gt;
 ## 
 ## Field &quot;is_symmetric&quot;:
 ## [1] FALSE

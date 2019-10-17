@@ -88,12 +88,12 @@ Then, we should find the file "Guerry_r.gal" in the output directory.
 
 To create a Distance based weights, we can call rgeoda's function 
 ```r
-gda_distance_weights(gda, dist_thres, power=1.0,  is_inverse=False, is_arc=False, is_mile=True)
+distance_weights(gda, dist_thres, power=1.0,  is_inverse=False, is_arc=False, is_mile=True)
 ``` 
 by passing the GeoDa object `guerry` we just created and the value of distance threshold. Like GeoDa, rgeoda provides a function to help you find a optimized distance threshold that guarantees that every observation has at least one neighbor:
 
 ```r
-gda_min_distthreshold(GeoDa gda, bool is_arc = False, bool is_mile = True)
+min_distthreshold(GeoDa gda, bool is_arc = False, bool is_mile = True)
 ```
 
 ```{r}
@@ -105,7 +105,7 @@ dist_w
 
 A special case of distance based weights is K-Nearest neighbor weights, in which every obersvation will have exactly k neighbors. To create a KNN weights, we can call rgeoda's function:
 ```r
-gda_knn_weights(gda, k, power = 1.0,is_inverse = False, is_arc = False, is_mile = True)
+knn_weights(gda, k, power = 1.0,is_inverse = False, is_arc = False, is_mile = True)
 ```
 
 For example, to create a 6-nearest neighbor weights using Guerry dataset:
@@ -148,7 +148,7 @@ use_kernel_diagonals
 
 To create a kernel weights with adaptive bandwidth or using max KNN distance as bandwidth:
 ```{r}
-adptkernel_w = kernel_knn_weights(guerry, 6, "uniform")
+adptkernel_w <- kernel_knn_weights(guerry, 6, "uniform")
 
 adptkernel_w
 ```

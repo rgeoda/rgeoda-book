@@ -24,7 +24,7 @@
 <meta name="author" content="Xun Li" />
 
 
-<meta name="date" content="2019-10-16" />
+<meta name="date" content="2019-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -269,7 +269,7 @@ By default, sp_to_geoda() only using geometries to create a geoda object, which 
 </div>
 <div id="esda-with-rgeoda-and-sp-1" class="section level2">
 <h2><span class="header-section-number">7.3</span> ESDA with rgeoda and sp</h2>
-<p>Now, with the geoda object <code>guerry</code>, you can call rgeoda’s spatial analysis functions. For example, to examine the local Moran statistics of variable “crm_prs” (Population per Crime against persons):</p>
+<p>Now, with the geoda object <code>guerry</code>, you can call rgeoda’s spatial analysis functions. For example, to examine the local Moran statistics of variable “crm_prp” (Population per Crime against persons):</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">queen_w &lt;-<span class="st"> </span><span class="kw">queen_weights</span>(guerry)</a>
 <a class="sourceLine" id="cb116-2" data-line-number="2">crm_prp &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Crm_prp))</a></code></pre></div>
 <div class="rmdnote">
@@ -348,12 +348,12 @@ Why are we using <code>as.numeric(as.character(guerry_sp<span class="math inline
 <div id="skater-map" class="section level3">
 <h3><span class="header-section-number">7.3.4</span> SKATER Map</h3>
 <p>To create a map of SKATER clustering map:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">Crm_prp &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Crm_prp))</a>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">Crm_prs &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Crm_prs))</a>
 <a class="sourceLine" id="cb125-2" data-line-number="2">Litercy &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Litercy))</a>
 <a class="sourceLine" id="cb125-3" data-line-number="3">Donatns &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Donatns))</a>
 <a class="sourceLine" id="cb125-4" data-line-number="4">Infants &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Infants))</a>
 <a class="sourceLine" id="cb125-5" data-line-number="5">Suicids &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(guerry_sp<span class="op">$</span>Suicids))</a>
-<a class="sourceLine" id="cb125-6" data-line-number="6">data &lt;-<span class="st"> </span><span class="kw">list</span>(crm_prp, Crm_prp, Donatns, Infants, Suicids)</a>
+<a class="sourceLine" id="cb125-6" data-line-number="6">data &lt;-<span class="st"> </span><span class="kw">list</span>(Crm_prs, crm_prp, Litercy, Donatns, Infants, Suicids)</a>
 <a class="sourceLine" id="cb125-7" data-line-number="7">guerry_clusters &lt;-<span class="st"> </span><span class="kw">skater</span>(<span class="dv">4</span>, queen_w, data)</a>
 <a class="sourceLine" id="cb125-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb125-9" data-line-number="9"><span class="co"># Get some colors for each clusters</span></a>
@@ -373,35 +373,38 @@ Why are we using <code>as.numeric(as.character(guerry_sp<span class="math inline
 <a class="sourceLine" id="cb125-23" data-line-number="23"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;SKATER Clustering Map&quot;</span>)</a>
 <a class="sourceLine" id="cb125-24" data-line-number="24"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> skater_labels, <span class="dt">fill =</span> skater_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
 <p><img src="rgeoda-book_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
-<div class="rmdnote">
+<div class="rmdquestion">
 <p>
-Why are we using <code>as.numeric(as.character(guerry_sp<span class="math inline">\(Crm_prp))&lt;/code&gt;?&lt;/p&gt; &lt;p&gt;As we can see from the output of &lt;code&gt;readOGR(guerry_path)&lt;/code&gt; that: _“Integer64 fields read as strings: dept Crm_prs Crm_prp Litercy Donatns Infants Suicids MainCty_”, so &lt;code&gt;guerry_sp\)</span>Crm_prp</code> is with data type <code>factor</code>, so <code>as.numeric(as.character())</code> is used to convert it to a column with numeric values without lossing precisions.
+Why are we using <code>as.numeric(as.character(guerry_sp$Crm_prp))</code> here to get values from data.frame?
 </p>
 </div>
+<p>As we can see from the output of <code>readOGR(guerry_path)</code> that:</p>
+<pre><code>_&quot;Integer64 fields read as strings:  dept Crm_prs Crm_prp Litercy Donatns Infants Suicids MainCty_&quot;</code></pre>
+<p>, that means <code>guerry_sp$Crm_prp</code> is with data type <code>factor</code>, so <code>as.numeric(as.character())</code> is used to convert it to a column with numeric values without lossing precisions.</p>
 </div>
 <div id="max-p-clustering-map" class="section level3">
 <h3><span class="header-section-number">7.3.5</span> Max-p Clustering Map</h3>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">bound_vals &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(guerry_sp<span class="op">$</span>Pop1831)</a>
-<a class="sourceLine" id="cb126-2" data-line-number="2">min_bound &lt;-<span class="st"> </span><span class="fl">3236.67</span> <span class="co"># 10% of Pop1831</span></a>
-<a class="sourceLine" id="cb126-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb126-4" data-line-number="4">maxp_clusters &lt;-<span class="st"> </span><span class="kw">maxp</span>(queen_w, data, bound_vals, min_bound, <span class="st">&quot;greedy&quot;</span>)</a>
-<a class="sourceLine" id="cb126-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb126-6" data-line-number="6"><span class="co"># Get some colors for each clusters</span></a>
-<a class="sourceLine" id="cb126-7" data-line-number="7">maxp_colors &lt;-<span class="st"> </span><span class="kw">palette</span>()[<span class="dv">2</span><span class="op">:</span><span class="dv">10</span>]</a>
-<a class="sourceLine" id="cb126-8" data-line-number="8">maxp_labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;c3&quot;</span>,<span class="st">&quot;c4&quot;</span>,<span class="st">&quot;c5&quot;</span>,<span class="st">&quot;c6&quot;</span>,<span class="st">&quot;c7&quot;</span>,<span class="st">&quot;c8&quot;</span>)</a>
-<a class="sourceLine" id="cb126-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb126-10" data-line-number="10"><span class="co"># Assign a color for each observation</span></a>
-<a class="sourceLine" id="cb126-11" data-line-number="11">colors &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;#000000&quot;</span>, queen_w<span class="op">$</span>num_obs)</a>
-<a class="sourceLine" id="cb126-12" data-line-number="12"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>) {</a>
-<a class="sourceLine" id="cb126-13" data-line-number="13">  <span class="cf">for</span> (j <span class="cf">in</span> maxp_clusters[i]) {</a>
-<a class="sourceLine" id="cb126-14" data-line-number="14">    colors[j<span class="op">+</span><span class="dv">1</span>] &lt;-<span class="st"> </span>maxp_colors[i]</a>
-<a class="sourceLine" id="cb126-15" data-line-number="15">  }</a>
-<a class="sourceLine" id="cb126-16" data-line-number="16">}</a>
-<a class="sourceLine" id="cb126-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb126-18" data-line-number="18"><span class="co"># plot</span></a>
-<a class="sourceLine" id="cb126-19" data-line-number="19"><span class="kw">plot</span>(guerry_sp,  <span class="dt">col=</span>colors, <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb126-20" data-line-number="20"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Max-p Clustering Map&quot;</span>)</a>
-<a class="sourceLine" id="cb126-21" data-line-number="21"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> maxp_labels, <span class="dt">fill =</span> maxp_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">bound_vals &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(guerry_sp<span class="op">$</span>Pop1831)</a>
+<a class="sourceLine" id="cb127-2" data-line-number="2">min_bound &lt;-<span class="st"> </span><span class="fl">3236.67</span> <span class="co"># 10% of Pop1831</span></a>
+<a class="sourceLine" id="cb127-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb127-4" data-line-number="4">maxp_clusters &lt;-<span class="st"> </span><span class="kw">maxp</span>(queen_w, data, bound_vals, min_bound, <span class="st">&quot;greedy&quot;</span>)</a>
+<a class="sourceLine" id="cb127-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb127-6" data-line-number="6"><span class="co"># Get some colors for each clusters</span></a>
+<a class="sourceLine" id="cb127-7" data-line-number="7">maxp_colors &lt;-<span class="st"> </span><span class="kw">palette</span>()[<span class="dv">2</span><span class="op">:</span><span class="dv">10</span>]</a>
+<a class="sourceLine" id="cb127-8" data-line-number="8">maxp_labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;c3&quot;</span>,<span class="st">&quot;c4&quot;</span>,<span class="st">&quot;c5&quot;</span>,<span class="st">&quot;c6&quot;</span>,<span class="st">&quot;c7&quot;</span>,<span class="st">&quot;c8&quot;</span>)</a>
+<a class="sourceLine" id="cb127-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb127-10" data-line-number="10"><span class="co"># Assign a color for each observation</span></a>
+<a class="sourceLine" id="cb127-11" data-line-number="11">colors &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;#000000&quot;</span>, queen_w<span class="op">$</span>num_obs)</a>
+<a class="sourceLine" id="cb127-12" data-line-number="12"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>) {</a>
+<a class="sourceLine" id="cb127-13" data-line-number="13">  <span class="cf">for</span> (j <span class="cf">in</span> maxp_clusters[i]) {</a>
+<a class="sourceLine" id="cb127-14" data-line-number="14">    colors[j<span class="op">+</span><span class="dv">1</span>] &lt;-<span class="st"> </span>maxp_colors[i]</a>
+<a class="sourceLine" id="cb127-15" data-line-number="15">  }</a>
+<a class="sourceLine" id="cb127-16" data-line-number="16">}</a>
+<a class="sourceLine" id="cb127-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb127-18" data-line-number="18"><span class="co"># plot</span></a>
+<a class="sourceLine" id="cb127-19" data-line-number="19"><span class="kw">plot</span>(guerry_sp,  <span class="dt">col=</span>colors, <span class="dt">border =</span> <span class="st">&quot;#333333&quot;</span>, <span class="dt">lwd=</span><span class="fl">0.2</span>)</a>
+<a class="sourceLine" id="cb127-20" data-line-number="20"><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Max-p Clustering Map&quot;</span>)</a>
+<a class="sourceLine" id="cb127-21" data-line-number="21"><span class="kw">legend</span>(<span class="st">&#39;bottomleft&#39;</span>, <span class="dt">legend =</span> maxp_labels, <span class="dt">fill =</span> maxp_colors, <span class="dt">border =</span> <span class="st">&quot;#eeeeee&quot;</span>)</a></code></pre></div>
 <p><img src="rgeoda-book_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
 
 </div>

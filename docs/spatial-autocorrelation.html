@@ -24,7 +24,7 @@
 <meta name="author" content="Xun Li" />
 
 
-<meta name="date" content="2019-10-16" />
+<meta name="date" content="2019-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -364,14 +364,14 @@ seed for random number generator: 123456789</code></pre>
 <h2><span class="header-section-number">5.3</span> Local Geary</h2>
 <p>Local Geary is a type of LISA that focuses on squared differences/dissimilarity. A small value of the local geary statistics suggest positive spatial autocorrelation, whereas large values suggest negative spatial autocorrelation.</p>
 <p>For example, we can call the function <code>local_geary()</code> with the created Queen weights and the data “crm_prp” as input parameters:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">geary_crmprs &lt;-<span class="st"> </span><span class="kw">local_geary</span>(queen_w, crm_prp)</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">geary_crmprp &lt;-<span class="st"> </span><span class="kw">local_geary</span>(queen_w, crm_prp)</a></code></pre></div>
 <p>To get the cluster indicators of the local Geary computation:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">geary_crmprs<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">geary_crmprp<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a></code></pre></div>
 <pre><code>##  [1] 0 2 4 0 3 0 0 0 0 0 0 0 0 0 0 0 0 1 0 2 1 0 0 0 2 2 0 0 0 0 0 0 0 4 0
 ## [36] 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 ## [71] 2 0 0 2 0 0 0 0 0 0 0 0 4 0 0</code></pre>
 <p>To get the pseudo-p values of the local Geary computation:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">geary_crmprs<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">geary_crmprp<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
 <pre><code>##  [1] 0.398 0.027 0.025 0.126 0.017 0.314 0.610 0.141 0.284 0.110 0.559
 ## [12] 0.462 0.211 0.236 0.249 0.229 0.069 0.041 0.205 0.020 0.029 0.178
 ## [23] 0.369 0.112 0.024 0.027 0.092 0.420 0.488 0.051 0.377 0.253 0.217
@@ -386,14 +386,14 @@ seed for random number generator: 123456789</code></pre>
 <p>There are two types of local Getis-Ord statistics: one is computing a ratio of the weighted average of the values in the neighboring locations, not including the value at the location; while another type of statistic includes the value at the location in both numerator and denominator.</p>
 <p>A value larger than the mean suggests a high-high cluster or hot spot, a value smaller than the mean indicates a low-low cluster or cold spot.</p>
 <p>For example, we can call the function <code>local_g()</code> with the created Queen weights and the data “crm_prp” as input parameters:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">localg_crmprs &lt;-<span class="st"> </span><span class="kw">local_g</span>(queen_w, crm_prp)</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">localg_crmprp &lt;-<span class="st"> </span><span class="kw">local_g</span>(queen_w, crm_prp)</a></code></pre></div>
 <p>To get the cluster indicators of the local G computation:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">localg_crmprs<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">localg_crmprp<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a></code></pre></div>
 <pre><code>##  [1] 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 2 2 0 0 0 0 0 0 0 0 0
 ## [36] 1 0 0 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 2 2 0 0 1 0 0 0 0 0 1 0 0 0
 ## [71] 2 0 2 2 0 2 0 0 0 0 0 0 1 0 0</code></pre>
 <p>To get the pseudo-p values of the local G computation:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">localg_crmprs<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">localg_crmprp<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
 <pre><code>##  [1] 0.414 0.123 0.001 0.474 0.452 0.087 0.243 0.326 0.299 0.303 0.237
 ## [12] 0.460 0.258 0.018 0.199 0.188 0.131 0.004 0.456 0.342 0.041 0.143
 ## [23] 0.429 0.412 0.002 0.026 0.479 0.400 0.121 0.350 0.481 0.441 0.338
@@ -403,7 +403,7 @@ seed for random number generator: 123456789</code></pre>
 ## [67] 0.015 0.334 0.069 0.303 0.039 0.132 0.001 0.002 0.470 0.007 0.213
 ## [78] 0.387 0.123 0.403 0.455 0.352 0.011 0.322 0.135</code></pre>
 <p>For the second type of local Getis-Ord statistics, we can call the function <code>local_gstar()</code> with the created Queen weights and the data “crm_prp” as input parameters:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">localgstar_crmprs &lt;-<span class="st"> </span><span class="kw">local_gstar</span>(queen_w, crm_prp)</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">localgstar_crmprp &lt;-<span class="st"> </span><span class="kw">local_gstar</span>(queen_w, crm_prp)</a></code></pre></div>
 </div>
 <div id="local-join-count" class="section level2">
 <h2><span class="header-section-number">5.5</span> Local Join Count</h2>
@@ -413,20 +413,20 @@ seed for random number generator: 123456789</code></pre>
 <a class="sourceLine" id="cb83-2" data-line-number="2">columbus &lt;-<span class="st"> </span><span class="kw">geoda_open</span>(columbus_path)</a>
 <a class="sourceLine" id="cb83-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb83-4" data-line-number="4">columbus_w &lt;-<span class="st"> </span><span class="kw">queen_weights</span>(columbus)</a>
-<a class="sourceLine" id="cb83-5" data-line-number="5">localjc_crmprs &lt;-<span class="st"> </span><span class="kw">local_joincount</span>(columbus_w, columbus<span class="op">$</span>table<span class="op">$</span>nsa)</a></code></pre></div>
+<a class="sourceLine" id="cb83-5" data-line-number="5">localjc_crmprp &lt;-<span class="st"> </span><span class="kw">local_joincount</span>(columbus_w, columbus<span class="op">$</span>table<span class="op">$</span>nsa)</a></code></pre></div>
 <p>To get the cluster indicators of the local Join Count computation:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">localjc_crmprs<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">localjc_crmprp<span class="op">$</span><span class="kw">GetClusterIndicators</span>()</a></code></pre></div>
 <pre><code>##  [1] 0 0 1 1 1 0 1 1 1 0 1 1 1 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 ## [36] 0 0 0 0 0 0 0 0 0 0 0 0 0 0</code></pre>
 <p>To get the pseudo-p values of the local Join Count computation:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">localjc_crmprs<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">localjc_crmprp<span class="op">$</span><span class="kw">GetPValues</span>()</a></code></pre></div>
 <pre><code>##  [1] 0.213 0.070 0.017 0.010 0.001 0.234 0.018 0.007 0.006 0.275 0.017
 ## [12] 0.008 0.043 0.004 0.002 0.001 0.147 0.049 0.087 0.001 0.001 0.372
 ## [23] 0.001 0.450 0.287 0.249 0.001 0.001 0.001 0.001 0.001 0.001 0.001
 ## [34] 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001
 ## [45] 0.001 0.001 0.001 0.001 0.001</code></pre>
 <p>To get the number of neighbors of the local Join Count computation:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">localjc_crmprs<span class="op">$</span><span class="kw">GetNumNeighbors</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">localjc_crmprp<span class="op">$</span><span class="kw">GetNumNeighbors</span>()</a></code></pre></div>
 <pre><code>##  [1]  2  3  4  5  8  2  5  6  8  4  5  6  4  6  6  8  3  4  3 10  3  6  3
 ## [24]  7  8  6  4  9  7  5  3  4  4  4  7  5  6  6  3  5  3  2  6  5  4  2
 ## [47]  2  4  3</code></pre>
